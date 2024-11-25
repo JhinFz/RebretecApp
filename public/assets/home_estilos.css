@@ -1,0 +1,171 @@
+/* Estilos generales */
+
+.btn {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	background-color: #4CAF50;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	outline: none;
+}
+.btn:hover {
+	background-color: #3e8e41;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: Arial, sans-serif;
+font-size: 16px;
+line-height: 1.5;
+}
+
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px;
+background-color: #368F3C;
+color: #fff;
+}
+
+.logo img {
+width: 150px;
+height: 100px;
+}
+
+ul.menu {
+display: flex;
+list-style: none;
+}
+
+ul.menu li {
+margin-right: 20px;
+}
+
+ul.menu li:last-child {
+margin-right: 0;
+}
+
+ul.menu li a {
+color: #fff;
+text-decoration: none;
+}
+
+.carousel img {
+display: block;
+max-width: 100%;
+height: auto;
+}
+
+.request-info {
+background-color: #f2f2f2;
+padding: 30px;
+text-align: center;
+}
+
+.request-info p {
+margin-bottom: 20px;
+}
+
+.request-info a {
+display: inline-block;
+padding: 10px 20px;
+background-color: #61c9a8;
+color: #fff;
+text-decoration: none;
+border-radius: 5px;
+}
+
+.news-events {
+padding: 30px;
+}
+
+.news-events h2 {
+margin-bottom: 20px;
+}
+
+.news-event {
+display: flex;
+margin-bottom: 30px;
+}
+
+.news-event img {
+width: 300px;
+height: 200px;
+object-fit: cover;
+margin-right: 20px;
+}
+
+.news-event-info h3 {
+margin-bottom: 10px;
+}
+
+.services {
+padding: 30px;
+}
+
+.services h2 {
+margin-bottom: 20px;
+}
+
+.service {
+padding: 20px;
+border: 1px solid #f2f2f2;
+margin-bottom: 20px;
+}
+
+.service h3 {
+margin-bottom: 10px;
+}
+
+.useful-links {
+padding: 30px;
+}
+
+.useful-links h2 {
+margin-bottom: 20px;
+}
+
+.useful-links ul {
+list-style: none;
+}
+
+.useful-links ul li {
+margin-bottom: 10px;
+}
+
+.contact-info {
+padding: 30px;
+background-color: #f2f2f2;
+text-align: center;
+}
+
+.contact-info h2 {
+margin-bottom: 20px;
+}
+
+.contact-info ul {
+list-style: none;
+margin-bottom: 20px;
+}
+
+.contact-info ul li {
+margin-bottom: 10px;
+}
+
+footer {
+background-color: #ddd;
+padding: 20px;
+text-align: center;
+}
