@@ -34,8 +34,6 @@ Route::post('contactanos', [ContactanosController::class, 'store'])->name('conta
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dispositivos', [DispositivoController::class, 'index'])->name('registros');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/contactos', [ContactanosController::class, 'vista'])->name('contactos');
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/registrar-equipo', [DispositivoController::class, 'form'])->name('registro.form');
 
 // Route::get('/editar-equipo', [DispositivoController::class, 'edit',$id])->name('editar');
