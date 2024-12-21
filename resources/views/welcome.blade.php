@@ -4,7 +4,7 @@
 	<title>SEDE - ESPOCH MORONA SANTIAGO</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/home_estilos.css') }}">
-	 <link rel="shortcut icon" href="vendor/adminlte/dist/img/rebre-icon-load.ico" />
+	<link rel="shortcut icon" href="vendor/adminlte/dist/img/rebre-icon-load.ico" />
 </head>
 <style>
     /* Estilos para el botón flotante de accesibilidad */
@@ -162,6 +162,9 @@
       <feColorMatrix type="matrix" values="0.625 0.375 0 0 0 0.7 0.3 0 0 0 0 0.3 0.7 0 0 0 0 0 1 0"/>
     </filter>
   </svg>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 <body>
@@ -178,7 +181,7 @@
 			<li><a  class="btn" href="{{route('contactanos.index')}}">Solicitar Servicio</a></li>
 			@if (Route::has('login'))
             @auth
-				<li><a href="{{ url('/dispositivos') }}" class="btn">Panel Administrativo</a></li>
+				<li><a href="{{ route('registros') }}" class="btn" style="background-color: rgb(255, 98, 0);">Panel Administrativo</a></li>
             @else
 				<li><a href="{{ route('login') }}" class="btn">Ingresar</a></li>
 
@@ -190,6 +193,17 @@
          @endif
 		</ul>
 	</header>
+	@if (session('info'))
+    <script>
+        alert({{ json_encode(session('info')) }});
+    </script>
+	@endif
+
+    @if (session('info'))
+    <script>
+        alert('{{ session('info') }}');
+    </script>
+	@endif
 	<div class="carousel" align="center">
 		<img src="{{ asset('assets/logos/LOGO2_ .jpg') }}" alt="Imagen promocional">
 	</div>

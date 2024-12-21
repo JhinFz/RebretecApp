@@ -125,13 +125,9 @@
                   <td colspan="3"><textarea class="form-control" name="observaciones"></textarea></td>
                 </tr>
                 <tr>
-                  <td colspan="4">Términos y condiciones: La parte Donante declara ser propietaria del bien mueble objeto de la presente nota de entrega, además tiene la intención libre, voluntaria de donar y no realizar ningún reclamo posterior a la entrega del equipo informático a la institución.</td>
-                </tr>
-                
-                <tr>
-                  <td>Nombre del Donador:</td>
+                  <td>Nombre del Representante:</td>
                   <td><input type="text" class="form-control" name="nombre_donador"></td>
-                  <td>#C.L:</td>
+                  <td>#C.I:</td>
                   <td><input type="text" class="form-control" name="cl"></td>
                 </tr>
                 <tr>

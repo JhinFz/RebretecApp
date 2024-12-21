@@ -36,7 +36,6 @@
             <th scope="col">Detalles</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Dirección</th>
-            <th scope="col">Dispositivo a donar</th>
             <th scope="col">Fecha de creación</th>
         </tr>
     </thead>

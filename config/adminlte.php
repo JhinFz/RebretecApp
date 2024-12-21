@@ -84,7 +84,7 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'Auth Logo',
@@ -252,8 +252,8 @@ return [
     |
     */
 
-    'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'use_route_url' => true,
+    'dashboard_url' => 'registros',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -312,7 +312,7 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Registro de Equipos',
-                    'url'         => 'dispositivos',
+                    'route'       => 'registros',
                     'icon'        => 'fas fa-pencil-alt',
                     'icon_color'  => 'success',
                     'label'       => 'CRUD',
@@ -320,27 +320,29 @@ return [
                 ],
                 [
                     'text'        => 'Solicitudes',
-                    'url'         => 'contactos',
+                    'route'       => 'contactos',
                     'icon'        => 'fas fa-envelope',
                     'icon_color'  => 'info',
+                    'can'         => 'admin.solicitudes'
                 ],
             ],
         ],
         [
             'text'    => 'USUARIOS',
-            'icon'    => 'fas fa-database',
+            'icon'    => 'fas fa-users',
+            'can'     => 'admin.users.index',
             'submenu' => [
                 [
                     'text'        => 'Gestión de Usuarios',
-                    'url'         => 'dispositivos',
+                    'route'       => 'admin.users.index',
                     // 'icon'        => 'fas fa-pencil-alt',
                     'icon_color'  => 'success',
                     'label'       => 'CRUD',
                     'label_color' => 'warning',
                 ],
                 [
-                    'text'        => 'Roles de Usuarios',
-                    'url'         => 'dispositivos',
+                    'text'        => 'Creación/Aprobación',
+                    'route'       => 'admin.users.create',
                     // 'icon'        => 'fas fa-envelope',
                     'icon_color'  => 'info',
                 ],

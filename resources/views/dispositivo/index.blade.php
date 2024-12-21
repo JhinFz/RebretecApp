@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<h2>Listado de Donantes:</h2>
+<h2>Listado de Instituciones:</h2>
 <div align="right">
     <a href="{{route('dispositivo.pdf')}}" class="btn btn-danger" target="_blank">Reporte PDF</a>
 </div>
@@ -24,7 +24,7 @@
             <th scope="col">Telefono</th>
             <th scope="col">Fecha</th>
             <th scope="col">Hora</th>
-            <th scope="col">Punto de Recolección</th>
+            <th scope="col">Ubicación</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -52,7 +52,7 @@
     </tbody>
 </table>
 <br><br>
-<h2>Listado de Dispositivos:</h2>
+<h2>Listado de Equipos:</h2>
 <br><br>
 <table id="dispositivos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
@@ -65,7 +65,7 @@
             <th scope="col">Serie</th>
             <th scope="col">Detalle</th>
             <th scope="col">Observaciones</th>
-            <th scope="col">Nombre de Donador</th>
+            <th scope="col">Nombre del Representante</th>
             <th scope="col">CI</th>
             <th scope="col">Técnico/Ingeniero</th>
             <th scope="col">Acciones</th>
@@ -112,7 +112,7 @@
                                         
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Cédula del donador:</label>
+                                        <label for="exampleInputEmail1" class="form-label">Cédula del Representante:</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtci" value="{{ $dispositivo->ci }}">
                                         
                                     </div>
@@ -200,7 +200,7 @@
                                     </div>
                                     <div class="mb-3">
 
-                                        <label for="exampleInputEmail1" class="form-label">Nombre del donador:</label>
+                                        <label for="exampleInputEmail1" class="form-label">Nombre del Representante:</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtnombre" value="{{ $dispositivo->n_donante }}">
                                         
                                     </div>
