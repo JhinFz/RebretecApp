@@ -27,12 +27,20 @@ class UserController extends Controller
         return view('admin.users.index');
     }
 
-    public function approve( User $user)
+    public function approve(User $user)
     {
+        // Marcar al usuario como aprobado
         $user->is_approved = true;
-        $user -> save();
+        $user->save();
 
-        return redirect()->route('admin.users.create',$user)->with('success', 'Usuario aprobado correctamente.');
+        // Asignar rol basado en el tipo de usuario
+        if ($user->tipo_usuario === 'tecnico') {
+            $user->assignRole('Tecnico'); 
+        } elseif ($user->tipo_usuario === 'institucion') {
+            $user->assignRole('Institucion'); 
+        }
+
+        return redirect()->route('admin.users.create', $user)->with('success', 'Usuario aprobado correctamente.');
     }
 
     /**
@@ -41,7 +49,8 @@ class UserController extends Controller
     public function create(User $usuario)
     {
 
-        $usuarios = User::all();
+        // $usuarios = User::all();
+        $usuarios = User::with('perfilInstitucion')->get();
         return view('admin.users.create', compact('usuarios'));
     }
 

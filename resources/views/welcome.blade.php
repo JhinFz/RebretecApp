@@ -181,7 +181,7 @@
 			<li><a  class="btn" href="{{route('contactanos.index')}}">Solicitar Servicio</a></li>
 			@if (Route::has('login'))
             @auth
-				<li><a href="{{ route('registros') }}" class="btn" style="background-color: rgb(255, 98, 0);">Panel Administrativo</a></li>
+				<li><a href="{{ route('dashboard') }}" class="btn" style="background-color: rgb(255, 98, 0);">Panel Administrativo</a></li>
             @else
 				<li><a href="{{ route('login') }}" class="btn">Ingresar</a></li>
 

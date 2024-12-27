@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -30,7 +29,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_approved'
+        'is_approved',
+        'tipo_usuario'
     ];
 
     /**
@@ -62,4 +62,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function perfilInstitucion()
+    {
+        return $this->hasOne(PerfilInstitucion::class, 'user_id', 'id');
+    }
+
+    public function perfilTecnico()
+    {
+        return $this->hasOne(PerfilTecnico::class, 'user_id', 'id');
+    }
 }

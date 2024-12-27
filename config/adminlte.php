@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => true,
-    'dashboard_url' => 'registros',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -307,8 +307,16 @@ return [
             'text' => 'search',
         ],
         [
+            'text'    => 'INICIO',
+            'icon'    => 'fas fa-home',
+            'route'   => 'dashboard',
+            'label'       => 'Menú',
+            'label_color' => 'warning',
+        ],
+        [
             'text'    => 'REGISTROS',
             'icon'    => 'fas fa-database',
+            'can'     => 'dashboard',
             'submenu' => [
                 [
                     'text'        => 'Registro de Equipos',
@@ -317,6 +325,8 @@ return [
                     'icon_color'  => 'success',
                     'label'       => 'CRUD',
                     'label_color' => 'warning',
+                    'can'         => 'dashboard',
+
                 ],
                 [
                     'text'        => 'Solicitudes',
@@ -345,6 +355,31 @@ return [
                     'route'       => 'admin.users.create',
                     // 'icon'        => 'fas fa-envelope',
                     'icon_color'  => 'info',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'REGISTROS',
+            'icon'    => 'fas fa-file-alt',
+            'can'     => 'institucion.formulario.index',
+            'submenu' => [
+                [
+                    'text'        => 'Registro de Solicitud',
+                    'route'       => 'institucion.labsolicitud.index',
+                    'icon'        => 'fas fa-pencil-alt',
+                    'icon_color'  => 'success',
+                    'label'       => '*',
+                    'label_color' => 'warning',
+                    'can'         => 'institucion.formulario.index',
+                ],
+                [
+                    'text'        => 'Solicitudes Enviadas',
+                    'route'       => 'institucion.solicitud.index',
+                    'icon'        => 'fas fa-envelope',
+                    'icon_color'  => 'success',
+                    // 'label'       => '*',
+                    // 'label_color' => 'warning',
+                    'can'         => 'institucion.formulario.index',
                 ],
             ],
         ],

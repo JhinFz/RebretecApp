@@ -1,5 +1,5 @@
 <div class="container mt-4">
-    <h1 class="mb-4">Lista de Usuarios</h1>
+    <h1 class="mb-4">Listado de Técnicos</h1>
 
     @if (session()->has('success'))
         <div class="alert alert-success">
@@ -7,7 +7,7 @@
         </div>
     @endif
 
-    <table id="gest-usuarios" class="table table-striped">
+    <table id="gest-tecnicos" class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -17,17 +17,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($usuarios as $usuario)
+            @foreach ($usuarios as $user)
                 <tr>
-                    <td>{{ $usuario->id }}</td>
-                    <td>{{ $usuario->name }}</td>
-                    <td>{{ $usuario->email }}</td>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
                     <td>
                         <!-- Botón de Editar -->
-                        <a href="{{ route('admin.users.edit', $usuario) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-warning btn-sm">Editar</a>
                         
                         <!-- Botón de Eliminar -->
-                        <form action="{{ route('admin.users.destroy', $usuario) }}" method="GET" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar este usuario?');">
+                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar este usuario?');">
                             @csrf
                             @method('DELETE') <!-- Esto indica que se debe usar el método DELETE -->
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
@@ -37,6 +37,42 @@
             @endforeach
         </tbody>
     </table>
+<div class="container">
+<h1>Listado de Instituciones Educativas</h1>
+</div>
+    <table id="gest-instituciones" class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Representante</th>
+                <th>Email</th>
+                <th>Acciones</th> <!-- Nueva columna para acciones -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($usuarios as $user)
+                @if ($user->tipo_usuario === 'institucion')
+                <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-warning btn-sm">Editar</a>
+                        
+                        <!-- Botón de Eliminar -->
+                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar este usuario?');">
+                            @csrf
+                            @method('DELETE') <!-- Esto indica que se debe usar el método DELETE -->
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                @endif
+            @endforeach
+        </tbody>
+    </table>
+
 
     <!-- Enlaces de paginación -->
     @section('js')
@@ -46,8 +82,20 @@
 
     <script>
         $(document).ready(function () {
-            $('#gest-usuarios').DataTable({
-                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]]
+            $('#gest-tecnicos').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('#gest-instituciones').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
             });
         });
     </script>

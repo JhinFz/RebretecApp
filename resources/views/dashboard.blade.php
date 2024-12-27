@@ -1,15 +1,52 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('adminlte::page')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
-            </div>
-        </div>
+@section('title', 'ADMINISTRACION DE USUARIOS')
+
+@section('content_header')
+    <h1>Menú Inicio</h1>
+@stop
+
+@section('content')
+
+<div class="container mt-5">
+    <h1>Bienvenido, {{ Auth::user()->name }}!</h1>
+    
+    <div class="mt-4">
+
+        @if(Auth::user()->hasRole('Administrador')) 
+
+        <a href="" class="btn btn-primary">Administrar Usuarios</a>
+        <a href="" class="btn btn-secondary">Configuraciones</a>
+        <a href="" class="btn btn-success">Informes</a>
+        <a href="" class="btn btn-info">Dashboard</a>
+        <a href="" class="btn btn-danger">Cerrar Sesión</a>
+
+        @endif
+
+        @if(Auth::user()->hasRole('Tecnico')) 
+
+        <a href="" class="btn btn-primary">Administrar Usuarios</a>
+        <a href="" class="btn btn-secondary">Configuraciones</a>
+        <a href="" class="btn btn-success">Informes</a>
+        <a href="" class="btn btn-info">Dashboard</a>
+        <a href="" class="btn btn-danger">Cerrar Sesión</a>
+
+        @endif
+
+        
+        @if(Auth::user()->hasRole('Institucion')) 
+
+        <a href="" class="btn btn-primary">Solicitar Mantenimiento</a>
+        <a href="" class="btn btn-secondary">Ver Estado de Solicitudes Enviadas</a>
+        <a href="" class="btn btn-info">Página Principal</a>
+        <a href="" class="btn btn-danger">Cerrar Sesión</a>
+
+        @endif
+
     </div>
-</x-app-layout>
+
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop

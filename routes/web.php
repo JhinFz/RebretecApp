@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DispositivoController;
 use App\Http\Controllers\ContactanosController;
+use App\Http\Controllers\Institucion\SolicitudController;
+use App\Http\Controllers\Institucion\SolicitudLabController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +46,10 @@ Route::middleware(['auth:sanctum', 'verified', 'check.approval'])->group(functio
     Route::post('/modificar-registro', [DispositivoController::class, 'update'])->name('donacion.modificar');
 
     Route::get('/eliminar-registro-{id}', [DispositivoController::class,'destroy'])->name("elim");
-    
+
+    //institucion- separar
+
+    Route::resource('solicitud', SolicitudLabController::class)->names('institucion.labsolicitud');
+
+    Route::resource('estado-solicitudes', SolicitudController::class)->names('institucion.solicitud');
 });

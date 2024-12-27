@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
-            $table->boolean('is_approved')->default(false); // Campo para aprobar usuarios
+            $table->string('tipo_usuario');
+            $table->boolean('is_approved')->default(false);
         });
     }
 
