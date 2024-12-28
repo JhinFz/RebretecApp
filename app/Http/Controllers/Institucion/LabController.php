@@ -3,25 +3,19 @@
 namespace App\Http\Controllers\Institucion;
 
 use App\Http\Controllers\Controller;
-use App\Models\LabSolicitud;
+use App\Models\Laboratorio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SolicitudLabController extends Controller
+class LabController extends Controller
 {
-     public function __construct()
-     {
-        $this->middleware('can:institucion.formulario.index')->only('index');
-        $this->middleware('can:institucion.formulario.create')->only('create');
-        $this->middleware('can:institucion.formulario.update')->only('edit','update');
-     }
-     
+    /**
+     * Display a listing of the resource.
+     */
+
     public function index()
     {
-        $usuario = Auth::user(); // Obtiene el usuario autenticado
-        $laboratorios = LabSolicitud::where('user_id', $usuario->id)->get(); // Filtra los laboratorios por el ID del usuario
-        // $solicitudes = LabSolicitud::with('user.labSolicitud')->get();
-        return view('institucion.create', compact('laboratorios'));
+        //
     }
 
     /**
@@ -45,18 +39,19 @@ class SolicitudLabController extends Controller
             'mensaje' => 'required|string|max:255',
         ]);
 
-        $laboratorio = new LabSolicitud();
+        $laboratorio = new Laboratorio();
+        $laboratorio->id_perfil = Auth::user()->perfilInstitucion->id_perfil;
         $laboratorio->name_lab = $request->name_lab;
         $laboratorio->ubicacion_lab = $request->ubicacion_lab;
         $laboratorio->cant_pc = $request->cant_pc;
         $laboratorio->d_internet = $request->d_internet;
-        $laboratorio->mensaje = $request->mensaje;
-        $laboratorio->user_id = Auth::id();
+        $laboratorio->detalles_lab = $request->mensaje;
+        
 
         if ($laboratorio->save()) { 
-            return redirect()->route('institucion.labsolicitud.index')->with('info','Laboratorio Guardado Correctamente');
+            return redirect()->route('institucion.form.index')->with('info','Laboratorio Guardado Correctamente');
         } else {
-            return redirect()->route('institucion.labsolicitud.index')->withErrors(['error' => 'Error al actualizar el usuario.']);
+            return redirect()->route('institucion.form.index')->withErrors(['error' => 'Error al actualizar el usuario.']);
         }
 
         // route('institucion.labsolicitud.index',$laboratorio)

@@ -16,14 +16,11 @@ class CheckUserApproval
     public function handle(Request $request, Closure $next)
     // : Response
     {
-        //  // Permitir el acceso a las rutas de login y registro solo si el usuario no está autenticado
-        //  if ($request->is('login') || $request->is('register')) {
-        //     if (Auth::check()) {
-        //         // Si el usuario está autenticado, redirigir a la página deseada
-        //         return redirect()->route('home'); // Cambia 'home' a la ruta que desees
-        //     }
-        //     return $next($request); // Permitir acceso si no está autenticado
-        // }
+
+        // Permitir el acceso a solicitudes PUT
+        if ($request->isMethod('put')) {
+            return $next($request);
+        }
 
         // Verifica si el usuario está autenticado
         if (Auth::check() && !Auth::user()->is_approved) {

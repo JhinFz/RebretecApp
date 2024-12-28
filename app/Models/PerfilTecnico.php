@@ -17,4 +17,9 @@ class PerfilTecnico extends Model
     {
         return $this->belongsTo(User::class, 'user_id','id');
     }
+
+    public function solicitud()
+    {
+        return $this->hasOne(Solicitud::class, 'id_tecnico', 'id_perfil');
+    }
 }

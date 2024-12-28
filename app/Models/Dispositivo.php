@@ -13,8 +13,13 @@ class Dispositivo extends Model
     protected $primaryKey = 'id_pc';
     protected $fillable = ['name_lab','ubicacion_lab','cant_pc','d_internet','detalles_lab','id_perfil'];
 
-    public function perfilInstitucion()
+    public function laboratorio()
     {
-        return $this->belongsTo(PerfilInstitucion::class, 'id_perfil','id_perfil');  //clave foranea, id tabla
+        return $this->belongsTo(Laboratorio::class, 'id_lab','id_lab');  //clave foranea, id tabla
+    }
+
+    public function diagnostico()
+    {
+        return $this->hasOne(Mantenimiento::class, 'id_diag', 'id_diag');
     }
 }

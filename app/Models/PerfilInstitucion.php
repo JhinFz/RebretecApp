@@ -17,4 +17,9 @@ class PerfilInstitucion extends Model
     {
         return $this->belongsTo(User::class, 'user_id','id');
     }
+
+    public function laboratorio()
+    {
+        return $this->hasOne(Laboratorio::class, 'id_perfil', 'id_perfil');
+    }
 }

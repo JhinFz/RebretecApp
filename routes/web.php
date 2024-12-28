@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DispositivoController;
 use App\Http\Controllers\ContactanosController;
+use App\Http\Controllers\Institucion\LabController;
 use App\Http\Controllers\Institucion\SolicitudController;
-use App\Http\Controllers\Institucion\SolicitudLabController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,7 @@ Route::get('contactanos', [ContactanosController::class, 'index'])->name('contac
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
 
 Route::middleware(['auth:sanctum', 'verified', 'check.approval'])->group(function () {
+
     Route::get('/dashboard', function (){return view('dashboard');})->name('dashboard');
 
     Route::get('/dispositivos', [DispositivoController::class, 'index'])->name('registros');
@@ -47,9 +48,4 @@ Route::middleware(['auth:sanctum', 'verified', 'check.approval'])->group(functio
 
     Route::get('/eliminar-registro-{id}', [DispositivoController::class,'destroy'])->name("elim");
 
-    //institucion- separar
-
-    Route::resource('solicitud', SolicitudLabController::class)->names('institucion.labsolicitud');
-
-    Route::resource('estado-solicitudes', SolicitudController::class)->names('institucion.solicitud');
 });

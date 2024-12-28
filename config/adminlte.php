@@ -365,7 +365,7 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Registro de Solicitud',
-                    'route'       => 'institucion.labsolicitud.index',
+                    'route'       => 'institucion.form.index',
                     'icon'        => 'fas fa-pencil-alt',
                     'icon_color'  => 'success',
                     'label'       => '*',

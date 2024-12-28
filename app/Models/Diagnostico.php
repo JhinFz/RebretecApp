@@ -21,6 +21,11 @@ class Diagnostico extends Model
     
     public function dispositivo()
     {
-        return $this->belongsTo(Dispositivo::class, 'id_pc');
+        return $this->belongsTo(Dispositivo::class, 'id_pc', 'id_pc');
+    }
+
+    public function Mantenimiento()
+    {
+        return $this->hasOne(Mantenimiento::class, 'id_diag', 'id_diag');
     }
 }
