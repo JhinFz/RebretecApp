@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Institucion;
 
 use App\Http\Controllers\Controller;
+use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,9 +15,8 @@ class SolicitudController extends Controller
     public function index()
     {
         // $usuario = Auth::user(); // Obtiene el usuario autenticado
-        // $laboratorios = LabSolicitud::where('user_id', $usuario->id)->get(); // Filtra los laboratorios por el ID del usuario
-        // $solicitudes = LabSolicitud::with('user.labSolicitud')->get();
-        return view('institucion.solicitudes');
+        $solicitudes = Solicitud::where('id_perfil', Auth::user()->PerfilInstitucion->id_perfil ?? null)->get();;
+        return view('institucion.solicitudes', compact('solicitudes'));
     }
 
     /**
@@ -40,7 +40,17 @@ class SolicitudController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        // Buscar la solicitud por ID
+        $solicitud = Solicitud::find($id);
+
+        // Verificar si la solicitud existe
+        if (!$solicitud) {
+            return redirect()->back()->with('error', 'Solicitud no encontrada.');
+        }
+
+        // Retornar la vista con la información de la solicitud
+        return view('institucion.estado_soli', compact('solicitud'));
     }
 
     /**

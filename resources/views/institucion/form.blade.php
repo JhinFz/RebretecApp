@@ -11,19 +11,21 @@
 <div class="container mt-5">
     <h2 class="text-center">Registrar Solicitud</h2>
 
-    @if (session('success'))
-        <div class="alert alert-success">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
             {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     @endif
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="error-message">
+            {{ session('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     @endif
 
@@ -40,6 +42,7 @@
                 <th>Ubicación del Laboratorio</th>
                 <th>Cantidad de Computadores</th>
                 <th>Disponilidad de Internet</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +52,17 @@
                     <td>{{ $laboratorio->ubicacion_lab }}</td>
                     <td>{{ $laboratorio->cant_pc }}</td>
                     <td>{{ $laboratorio->d_internet }}</td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <a href="{{ route('institucion.lab.edit', $laboratorio->id_lab) }}" class="btn btn-warning btn-sm">Editar</a>
+                                
+                        <!-- Botón de Eliminar -->
+                        <form action="{{ route('institucion.lab.destroy', $laboratorio->id_lab) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este laboratorio?');">
+                            @csrf
+                            @method('DELETE') <!-- Esto indica que se debe usar el método DELETE -->
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -113,9 +127,21 @@
 @endsection
 
 @section('scripts')
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script>
-    //
-</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Tiempo en milisegundos (por ejemplo, 5000 ms = 5 segundos)
+            var timeout = 5000;
 
+            // Ocultar el mensaje de éxito después del tiempo especificado
+            setTimeout(function() {
+                $('#success-message').fadeOut('slow');
+            }, timeout);
+
+            // Ocultar el mensaje de error después del tiempo especificado
+            setTimeout(function() {
+                $('#error-message').fadeOut('slow');
+            }, timeout);
+        });
+    </script>
 @endsection

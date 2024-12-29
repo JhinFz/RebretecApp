@@ -9,13 +9,73 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Lista de Solicitudes</h3>
+            <h3 class="card-title">Lista de Solicitudes Enviadas</h3>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>N°</th>
+                        <th>Asunto</th>
+                        <th>Detalles</th>
+                        <th>Estado</th>
+                        <th>Fecha de Envío</th>
+                        <th>Fecha de Aceptación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach ($solicitudes as $index => $solicitud)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $solicitud->asunto }}</td>
+                            <td>{{ $solicitud->detalles_soli }}</td>
+                            <td>
+                                <span class="badge 
+                                {{ 
+                                    $solicitud->estado_soli == 'procesando' ? 'bg-warning' : 
+                                    ($solicitud->estado_soli == 'aprobado' ? 'bg-success' : 
+                                    ($solicitud->estado_soli == 'rechazado' ? 'bg-danger' : ''))
+                                }}">
+                                {{ 
+                                    $solicitud->estado_soli == 'procesando' ? 'En Proceso' : 
+                                    ($solicitud->estado_soli == 'aprobado' ? 'Aprobado' : 
+                                    ($solicitud->estado_soli == 'rechazado' ? 'Rechazado' : ''))
+                                }}
+                            </span>
+                            </td>
+                            <td>{{ $solicitud->created_at }}</td>
+                            <td>{{ $solicitud->fecha_aceptacion ?? '-' }}</td>
+                            <td>
+                                <!-- Botón de Editar -->
+                                <a href="{{ route('institucion.solicitud.show', $solicitud->id_soli) }}" class="btn btn-info btn-sm">Más Información</a>
+                            </td>
+                        </tr>
+                        
+                        @endforeach
+
+                        @if ($solicitudes->isEmpty())
+                            <tr>
+                                <td colspan="7" class="text-center">No hay solicitudes registradas.</td>
+                            </tr>
+                        @endif
+                    </tr>                   
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <div>
+            <h3>Ejemplos de Solicitud:</h3>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>N°</th>
                         <th>Asunto</th>
                         <th>Detalles</th>
                         <th>Estado</th>
@@ -36,6 +96,7 @@
                             <a href="#" class="btn btn-info btn-sm">Más Información</a>
                         </td>
                     </tr>
+
                     <tr>
                         <td>2</td>
                         <td>Solicitud de Laboratorio B</td>
@@ -80,6 +141,7 @@
                             <a href="#" class="btn btn-info btn-sm">Más Información</a>
                         </td>
                     </tr>
+                   
                 </tbody>
             </table>
         </div>

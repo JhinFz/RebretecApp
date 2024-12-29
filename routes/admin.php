@@ -5,7 +5,7 @@ use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\Admin\UserController;
 
 
-Route::middleware(['auth:sanctum', 'verified', 'check.approval'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/contactos', [ContactanosController::class, 'vista'])->name('contactos');
     Route::resource('usuarios', UserController::class)->names('admin.users');

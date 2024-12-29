@@ -28,7 +28,7 @@ Route::fallback(function () {
 Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
 
-Route::middleware(['auth:sanctum', 'verified', 'check.approval'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', function (){return view('dashboard');})->name('dashboard');
 

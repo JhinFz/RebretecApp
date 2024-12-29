@@ -70,7 +70,11 @@ class LabController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $laboratorio = Laboratorio::find($id);
+        if (!$laboratorio) {
+            return redirect()->back()->with('error', 'Laboratorio no encontrado.');
+        }
+        return view('institucion.update_lab', compact('laboratorio'));
     }
 
     /**
@@ -78,7 +82,22 @@ class LabController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name_lab' => 'required|string|max:255',
+            'ubicacion_lab' => 'required|string|max:255',
+            'cant_pc' => 'required|integer',
+            'd_internet' => 'required|string',
+            'detalles_lab' => 'required|string',
+        ]);
+    
+        $laboratorio = Laboratorio::find($id);
+        if (!$laboratorio) {
+            return redirect()->back()->with('error', 'Laboratorio no encontrado.');
+        }
+    
+        $laboratorio->update($request->all());
+    
+        return redirect()->route('institucion.form.index')->with('success', 'Laboratorio actualizado correctamente.');
     }
 
     /**
@@ -86,6 +105,18 @@ class LabController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Buscar el laboratorio por ID
+        $laboratorio = Laboratorio::find($id);
+
+        // Verificar si el laboratorio existe
+        if (!$laboratorio) {
+            return redirect()->route('laboratorios.index')->with('error', 'Laboratorio no encontrado.');
+        }
+
+        // Eliminar el laboratorio
+        $laboratorio->delete();
+
+        // Redirigir al índice con un mensaje de éxito
+        return redirect()->route('institucion.form.index')->with('success', 'Laboratorio eliminado correctamente.');
     }
 }
