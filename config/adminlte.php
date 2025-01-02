@@ -314,6 +314,13 @@ return [
             'label_color' => 'warning',
         ],
         [
+            'text'        => 'Solicitudes',
+            'route'       => 'admin.solicitud.index',
+            'icon'        => 'fas fa-envelope',
+            'icon_color'  => 'info',
+            'can'         => 'admin.solicitudes'
+        ],
+        [
             'text'    => 'REGISTROS',
             'icon'    => 'fas fa-database',
             'can'     => 'dashboard',
@@ -327,13 +334,6 @@ return [
                     'label_color' => 'warning',
                     'can'         => 'dashboard',
 
-                ],
-                [
-                    'text'        => 'Solicitudes',
-                    'route'       => 'contactos',
-                    'icon'        => 'fas fa-envelope',
-                    'icon_color'  => 'info',
-                    'can'         => 'admin.solicitudes'
                 ],
             ],
         ],
