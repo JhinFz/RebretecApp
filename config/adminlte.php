@@ -321,13 +321,27 @@ return [
             'can'         => 'admin.solicitudes'
         ],
         [
+            'text'        => 'Solicitudes Asignadas',
+            'route'       => 'admin.solicitud.index',
+            'icon'        => 'fas fa-envelope',
+            'icon_color'  => 'success',
+            // 'can'         => 'admin.solicitudes'
+        ],
+        [
+            'text'        => 'Formulario de Accciones',
+            'route'       => 'tecnico.form.index',
+            // 'icon'        => 'fas fa-envelope',
+            'icon_color'  => 'success',
+            // 'can'         => 'admin.solicitudes'
+        ],
+        [
             'text'    => 'REGISTROS',
             'icon'    => 'fas fa-database',
             'can'     => 'dashboard',
             'submenu' => [
                 [
                     'text'        => 'Registro de Equipos',
-                    'route'       => 'registros',
+                    // 'route'       => 'registros',
                     'icon'        => 'fas fa-pencil-alt',
                     'icon_color'  => 'success',
                     'label'       => 'CRUD',

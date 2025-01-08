@@ -53,8 +53,6 @@ class LabController extends Controller
         } else {
             return redirect()->route('institucion.form.index')->withErrors(['error' => 'Error al actualizar el usuario.']);
         }
-
-        // route('institucion.labsolicitud.index',$laboratorio)
     }
 
     /**

@@ -13,9 +13,8 @@ class Diagnostico extends Model
     protected $primaryKey = 'id_diag';
     protected $fillable = [
         'id_pc',
+        'nombre_diag',
         'diagnostico_detail',
-        'estado',
-        'msg_admin'
     ];
 
     
@@ -24,7 +23,7 @@ class Diagnostico extends Model
         return $this->belongsTo(Dispositivo::class, 'id_pc', 'id_pc');
     }
 
-    public function Mantenimiento()
+    public function mantenimiento()
     {
         return $this->hasOne(Mantenimiento::class, 'id_diag', 'id_diag');
     }

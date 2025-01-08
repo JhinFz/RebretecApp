@@ -57,14 +57,7 @@
                                 </form>
                             </td>
                         </tr>
-                        
-                        @endforeach
-
-                        @if ($solicitudes->isEmpty())
-                            <tr>
-                                <td colspan="7" class="text-center">No hay solicitudes registradas.</td>
-                            </tr>
-                        @endif                 
+                        @endforeach             
                 </tbody>
             </table>
         </div>

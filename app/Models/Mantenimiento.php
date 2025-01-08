@@ -17,7 +17,7 @@ class Mantenimiento extends Model
         'estado_mant',
     ];
     
-    public function diagnostico()
+    public function diagnosticos()
     {
         return $this->belongsTo(Diagnostico::class, 'id_diag','id_diag');
     }

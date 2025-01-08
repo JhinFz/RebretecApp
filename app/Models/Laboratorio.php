@@ -15,11 +15,11 @@ class Laboratorio extends Model
 
     public function perfilInstitucion()
     {
-        return $this->belongsTo(PerfilInstitucion::class, 'user_id','id');
+        return $this->belongsTo(PerfilInstitucion::class, 'id_perfil','id_perfil');
     }
 
     public function dispositivo()
     {
-        return $this->hasOne(Dispositivo::class, 'id_lab', 'id_lab');
+        return $this->hasMany(Dispositivo::class, 'id_lab', 'id_lab');
     }
 }
