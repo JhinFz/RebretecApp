@@ -60,41 +60,23 @@
     </div>
     <div class="card-body">
 
-        <button class="btn btn-success" data-toggle="modal" data-target="#modalAprobar">Asignar Técnico</button>
+        <a href="{{ route('tecnico.form.index') }}" class="btn btn-success">Comenzar Atención</a>
 
-        <a href="{{ route('institucion.solicitud.index') }}" class="btn btn-primary">Volver al Listado</a>
-
-        @include('admin.solicitudes.modal_aprobar')
+        <a href="{{ route('tecnico.solicitud.index') }}" class="btn btn-primary">Volver al Listado</a>
         
     </div>
 </div>
-
-<select id="mySelect" style="width: 200px;">
-    <option value="1">Opción 1</option>
-    <option value="2">Opción 2</option>
-    <option value="3">Opción 3</option>
-</select>
 
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"/>
 @stop
 
-@push('js')
-    <script>
-        $(document).ready(function() {
-            $('#modalAprobar').on('shown.bs.modal', function () {
-                $('#tecnico').select2({
-                    placeholder: "Selecciona un técnico"
-                });
-            });
+@section('scripts')
 
-            $('#modalAprobar').on('hidden.bs.modal', function () {
-                $('#tecnico').select2('destroy'); // Destruir la instancia
-            });
-        });
+    <script>
+        //
     </script>
-@endpush
+
+@endsection

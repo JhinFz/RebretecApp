@@ -5,7 +5,7 @@
         </x-slot>
 
         <x-validation-errors class="mb-4" />
-
+        
         <script>
             function mostrarCamposAdicionales() {
                 var seleccion = document.getElementById("opcion").value;
@@ -51,7 +51,7 @@
             }
         </script>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form id="registerForm" method="POST" action="{{ route('register') }}" onsubmit="return confirm('Una vez registrada su cuenta necesitará esperar la aprobación del administrador.');">
             @csrf
 
             <div>

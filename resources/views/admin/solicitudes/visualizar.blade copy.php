@@ -83,18 +83,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"/>
 @stop
 
-@push('js')
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
     <script>
         $(document).ready(function() {
-            $('#modalAprobar').on('shown.bs.modal', function () {
-                $('#tecnico').select2({
-                    placeholder: "Selecciona un técnico"
+            $(document).on('shown.bs.modal','#modalAprobar', function () {
+                $('#searchTecnico').select2({
+                    placeholder: "Selecciona un técnico", // Placeholder al inicializar
                 });
-            });
-
-            $('#modalAprobar').on('hidden.bs.modal', function () {
-                $('#tecnico').select2('destroy'); // Destruir la instancia
+            })
+            $(document).on('hidden.bs.modal', '#modalAprobar', function () {
+                $('#searchTecnico').select2('destroy'); // Destruir la instancia
             });
         });
+        
+        // $(document).ready(function() {
+        //     $(#modalAprobar).on('show.bs.modal', function () {
+        //         $('#tecnico').select2({
+        //             placeholder: "Selecciona un técnico", // Placeholder al inicializar
+        //         });
+        //     });
+        // });
+
+
+
+            // const tecnicoInput = document.getElementById('tecnico');
+            // const sugerenciasList = document.getElementById('sugerencias');
+
+            // tecnicoInput.addEventListener('input', function() {
+            //     const valor = this.value;
+
+            //     if (valor) {
+            //         // Usar la ruta nombrada para la búsqueda
+            //         fetch(`{{ route('buscar.tecnico') }}?query=${valor}`)
+            //             .then(response => response.json())
+            //             .then(tecnicos => {
+            //                 sugerenciasList.innerHTML = '';
+            //                 if (tecnicos.length) {
+            //                     sugerenciasList.style.display = 'block';
+            //                     tecnicos.forEach(tecnico => {
+            //                         const li = document.createElement('li');
+            //                         li.className = 'list-group-item list-group-item-action';
+            //                         li.textContent = tecnico.name;
+            //                         li.onclick = function() {
+            //                             tecnicoInput.value = tecnico.name;
+            //                             sugerenciasList.innerHTML = '';
+            //                             document.getElementById('id_tecnico').value = tecnico.id; // ID permanece igual
+            //                         };
+            //                         sugerenciasList.appendChild(li);
+            //                     });
+            //                 } else {
+            //                     sugerenciasList.style.display = 'none';
+            //                 }
+            //             });
+            //     } else {
+            //         sugerenciasList.style.display = 'none';
+            //     }
+            // });
     </script>
-@endpush
+
+@endsection

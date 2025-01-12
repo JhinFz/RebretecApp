@@ -193,17 +193,13 @@
          @endif
 		</ul>
 	</header>
-	@if (session('info'))
-    <script>
-        alert({{ json_encode(session('info')) }});
-    </script>
+	
+    @if (session('info'))
+		<script>
+			alert('{{ addslashes(session('info')) }}');
+		</script>
 	@endif
 
-    @if (session('info'))
-    <script>
-        alert('{{ session('info') }}');
-    </script>
-	@endif
 	<div class="carousel" align="center">
 		<img src="{{ asset('assets/logos/LOGO2_ .jpg') }}" alt="Imagen promocional">
 	</div>

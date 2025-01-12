@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('fecha_aceptacion')->nullable();
             $table->unsignedBigInteger('id_tecnico')->nullable();
+            $table->boolean('cumplimiento')->default(false);
 
             // Definir la clave foránea
             $table->foreign('id_perfil')->references('id_perfil')->on('perfil_institucion');

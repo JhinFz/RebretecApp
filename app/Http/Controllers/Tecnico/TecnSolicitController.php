@@ -3,34 +3,21 @@
 namespace App\Http\Controllers\Tecnico;
 
 use App\Http\Controllers\Controller;
-use App\Models\Dispositivo;
 use App\Models\Laboratorio;
-use App\Models\PerfilTecnico;
 use App\Models\Solicitud;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TecnicoFormController extends Controller
+class TecnSolicitController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // Obtén el perfil del técnico autenticado
-        $perfilTecnico = PerfilTecnico::where('user_id', Auth::id())->first();
-        // Obtiene la solicitud asociada al perfil técnico
-        $solicitud = Solicitud::where('id_tecnico', $perfilTecnico->id_perfil)->first();
-        // Obtiene el perfil de institución asociado a la solicitud
-        $perfilInstitucion = $solicitud->perfilInstitucion;
-        // Obtiene todos los laboratorios asociados y carga dispositivos
-        $laboratorios = $perfilInstitucion->laboratorio()->with('dispositivo.diagnosticos.mantenimiento')->get();
-        // Filtra los dispositivos que pertenecen al laboratorio
-        $dispositivos = $laboratorios->flatMap(function ($laboratorio) {
-            return $laboratorio->dispositivo;
-        });
-    
-        return view('tecnico.diagnosticos_equipos', compact('dispositivos','laboratorios'));
+        $solicitudes = Solicitud::where('id_tecnico', Auth::id())->get();
+        return view('tecnico.asignaciones.asignaciones', compact('solicitudes'));
     }
 
     /**
@@ -38,7 +25,7 @@ class TecnicoFormController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -54,7 +41,12 @@ class TecnicoFormController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $solicitud = Solicitud::find($id);
+        if (!$solicitud) {
+            return redirect()->back()->with('error', 'Solicitud no encontrada.');
+        }
+        $laboratorios = Laboratorio::where('id_perfil', $solicitud->id_perfil)->get();
+        return view('tecnico.asignaciones.info_asig', compact('solicitud','laboratorios'));
     }
 
     /**

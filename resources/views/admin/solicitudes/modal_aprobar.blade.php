@@ -13,9 +13,16 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="tecnico">Seleccionar Técnico:</label>
-                        <input type="text" id="tecnico" class="form-control" placeholder="Escribe el nombre del técnico" required>
+                        {{-- <input type="text" id="tecnico" class="form-control" placeholder="Escribe el nombre del técnico" required> --}}
+                        <select id="tecnico" name="id_tecnico" class="form-control" required>
+                            <option value="">Selecciona un técnico</option>
+                            @foreach($tecnicos as $tecnico)
+                                <option value="{{ $tecnico->id }}">{{ $tecnico->name }}</option>
+                            @endforeach
+                        </select>
+                    
                         <input type="hidden" id="id_tecnico" name="id_tecnico">
-                        <ul id="sugerencias" class="list-group"></ul>
+                        {{-- <ul id="sugerencias" class="list-group"></ul> --}}
                     </div>
                     {{-- <div class="form-group">
                         <label for="fecha_visita">Fecha y Hora de Visita:</label>

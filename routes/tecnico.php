@@ -5,6 +5,7 @@ use App\Http\Controllers\Tecnico\DispositivoController;
 use App\Http\Controllers\Tecnico\MantenimientoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Tecnico\TecnicoFormController;
+use App\Http\Controllers\Tecnico\TecnSolicitController;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
@@ -36,5 +37,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'edit' => 'tecnico.mantenimiento.edit',
         'update' => 'tecnico.mantenimiento.update',
         'destroy' => 'tecnico.mantenimiento.destroy',
+    ]);
+    Route::resource('solicitudesAsignadas', TecnSolicitController::class)->names([
+        'index' => 'tecnico.solicitud.index',
+        'create' => 'tecnico.solicitud.create',
+        'store' => 'tecnico.solicitud.store',
+        'show' => 'tecnico.solicitud.show',
+        'edit' => 'tecnico.solicitud.edit',
+        'update' => 'tecnico.solicitud.update',
+        'destroy' => 'tecnico.solicitud.destroy',
     ]);
 });

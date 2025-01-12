@@ -62,8 +62,15 @@ class AdmSolicitController extends Controller
     public function buscarTecnico(Request $request)
     {
         $query = $request->input('query');
+        // $tecnicos = User::where('tipo_usuario', 'tecnico')
+        //                 ->where('name', 'like', "%$query%")
+        //                 ->get(['id', 'name']);
+
+        //tecnicos que ya han cumplido su solicitud
         $tecnicos = User::where('tipo_usuario', 'tecnico')
-                        ->where('name', 'like', "%$query%")
+                        ->whereDoesntHave('perfilTecnico.solicitud', function ($query) {
+                            $query->where('cumplimiento', false);
+                                })
                         ->get(['id', 'name']);
 
         return response()->json($tecnicos);

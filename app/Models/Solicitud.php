@@ -11,7 +11,7 @@ class Solicitud extends Model
 
     protected $table = 'solicitudes';
     protected $primaryKey = 'id_soli';
-    protected $fillable = ['id_perfil','asunto','detalles_soli','estado_soli','fecha_aceptacion','id_tecnico'];
+    protected $fillable = ['id_perfil','asunto','detalles_soli','estado_soli','fecha_aceptacion','id_tecnico','cumplimiento'];
 
     // Relación con perfil_institucion
     public function perfilInstitucion()

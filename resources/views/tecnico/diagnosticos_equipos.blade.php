@@ -29,6 +29,17 @@
 </div>
 <div class="card-body">
     <div>
+        <h7>
+            <p>En esta sección se deben ingresar los dispositivos que necesiten el servicio de mantenimiento (Botón Registrar Nuevo Dispositivo).</p>
+        </h7> 
+        <h7>
+            <p>
+                Por cada dispositivo ingresado, se podrá registrar las causas del mantenimiento (Botón Diagnóstico) 
+                y sus acciones correctivas (Botón Mantenimiento).
+            </p>
+        </h7>
+    </div>
+    <div>
         <button class="btn btn-success" data-toggle="modal" data-target="#registrarDispositivoModal">Registrar Nuevo Dispositivo</button>
     </div>
     <br>
@@ -41,7 +52,8 @@
                 <th>Modelo</th>
                 <th>Serie</th>
                 <th>Laboratorio</th>
-                <th>Fecha de Diagnóstico</th>
+                <th>Estado de Diagnóstico</th>
+                <th>Estado de Mantenimiento</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -54,7 +66,34 @@
                     <td>{{ $dispositivo->modelo }}</td>
                     <td>{{ $dispositivo->serie }}</td>
                     <td>{{ $dispositivo->laboratorio->name_lab }}</td>
-                    <td>2025-01-02 15:58</td>
+                    <td>
+                        @if ($dispositivo->diagnosticos->contains(function ($diagnostico) {
+                            return !is_null($diagnostico->id_diag);
+                        }))
+                            <div class="badge bg-info">
+                                Diagnosticado
+                            </div>
+                        @else
+                            <div class="badge bg-danger">
+                                Pendiente
+                            </div>
+                        @endif
+                    </td>
+                    <td>
+                        @if ($dispositivo->diagnosticos->contains(function ($diagnostico) {
+                            return $diagnostico->mantenimiento()->exists(function ($mant) {
+                                return !is_null($mant->id_diag);
+                            });
+                        }))
+                            <span class="badge bg-success">
+                                Corregido
+                            </span>
+                        @else
+                            <span class="badge bg-danger">
+                                Pendiente
+                            </span>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('tecnico.diagnostico.show', $dispositivo->id_pc) }}" class="btn btn-info">Diagnóstico</a>
                         <a href="{{ route('tecnico.mantenimiento.show', $dispositivo->id_pc) }}" class="btn btn-warning">Mantenimiento</a>
