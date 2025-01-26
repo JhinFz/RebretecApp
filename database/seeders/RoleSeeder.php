@@ -19,7 +19,7 @@ class RoleSeeder extends Seeder
 
         // Permisos globales para admin y tecnico
 
-        Permission::create(['name' => 'dashboard'])->syncRoles([$role1,$role2]);
+        Permission::create(['name' => 'dashboard'])->syncRoles([$role1,$role2,$role3]);
 
         // Permisos de Administrador
 

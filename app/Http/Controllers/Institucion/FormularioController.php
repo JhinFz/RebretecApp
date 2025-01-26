@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Institucion;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AprovTecnMail;
 use App\Models\Laboratorio;
 use App\Models\PerfilInstitucion;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FormularioController extends Controller
 {
@@ -51,12 +53,16 @@ class FormularioController extends Controller
             $solicitud->estado_soli = "procesando";
             
             if ($solicitud->save()) { 
+                //envia notificacion por correo
+                // $data = array_merge_recursive($solicitud->toArray(), $perfil->toArray());
+                // Mail::to(env('MAIL_ADMIN'))->send(new AprovTecnMail($data));
+
                 return redirect()->route('institucion.form.index')->with('success','Solicitud enviada Correctamente');
             } else {
                 return redirect()->route('institucion.form.index')->withErrors(['error' => 'Error al enviar solicitud.']);
             }
         }
 
-        return redirect()->route('institucion.form.index')->with('success', 'Mantenimiento registrado con éxito.');
+        return redirect()->route('institucion.form.index')->with('success', 'Solicitud de Mantenimiento registrado con éxito.');
     }
 }

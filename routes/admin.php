@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\AdmSolicitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\ReporteController;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
@@ -17,6 +17,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::put('/asignar-tecnico/{id}', [AdmSolicitController::class, 'update'])->name('institucion.solicitud.update');
 
     Route::get('/buscar-tecnico', [AdmSolicitController::class, 'buscarTecnico'])->name('buscar.tecnico');
+
+    // Reportes parametrizables en el tiempo
+    Route::get('/reporte-fechas', [ReporteController::class, 'mostrarFormAdmin'])->name('reportes.admin');
+    
+    Route::get('/reporte-usuarios', [ReporteController::class, 'reporteAdmin'])->name('genreport.usuarios.admin');
     
 });
 

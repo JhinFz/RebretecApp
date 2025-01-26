@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Tecnico;
 
 use App\Http\Controllers\Controller;
 use App\Models\Laboratorio;
+use App\Models\PerfilTecnico;
 use App\Models\Solicitud;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +16,8 @@ class TecnSolicitController extends Controller
      */
     public function index()
     {
-        $solicitudes = Solicitud::where('id_tecnico', Auth::id())->get();
+        $perfil = PerfilTecnico::where('user_id', Auth::id())->first();
+        $solicitudes = Solicitud::where('id_tecnico', $perfil->id_perfil)->get();
         return view('tecnico.asignaciones.asignaciones', compact('solicitudes'));
     }
 

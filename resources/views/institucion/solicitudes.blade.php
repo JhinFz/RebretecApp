@@ -12,7 +12,7 @@
             <h3 class="card-title">Lista de Solicitudes Enviadas</h3>
         </div>
         <div class="card-body">
-            <table class="table table-bordered">
+            <table id='estado-soli' class="table table-bordered">
                 <thead>
                     <tr>
                         <th>N°</th>
@@ -25,7 +25,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @if ($solicitudes->isEmpty())
+                        <tr>
+                            <td colspan="7" class="text-center">No hay solicitudes registradas.</td>
+                        </tr>
+                    @else
                         @foreach ($solicitudes as $index => $solicitud)
                         <tr>
                             <td>{{ $index + 1 }}</td>
@@ -52,15 +56,8 @@
                                 <a href="{{ route('institucion.solicitud.show', $solicitud->id_soli) }}" class="btn btn-info btn-sm">Más Información</a>
                             </td>
                         </tr>
-                        
                         @endforeach
-
-                        @if ($solicitudes->isEmpty())
-                            <tr>
-                                <td colspan="7" class="text-center">No hay solicitudes registradas.</td>
-                            </tr>
-                        @endif
-                    </tr>                   
+                    @endif                                     
                 </tbody>
             </table>
         </div>
@@ -150,4 +147,21 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#estado-soli').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
+            });
+        });
+    </script>
 @stop

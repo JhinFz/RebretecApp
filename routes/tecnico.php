@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\Tecnico\DiagnosticoController;
 use App\Http\Controllers\Tecnico\DispositivoController;
 use App\Http\Controllers\Tecnico\MantenimientoController;
@@ -47,4 +48,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'update' => 'tecnico.solicitud.update',
         'destroy' => 'tecnico.solicitud.destroy',
     ]);
+
+    // Reportes
+
+    Route::get('/reportes-tecnico', function () {return view('reportes.parametrosTecnico');})->name('reportes.tecnico');
+    Route::get('/reporte-gen', [ReporteController::class, 'reporteTecnico'])->name('genreport.tecnico');
 });

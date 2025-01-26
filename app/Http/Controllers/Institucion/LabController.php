@@ -49,7 +49,7 @@ class LabController extends Controller
         
 
         if ($laboratorio->save()) { 
-            return redirect()->route('institucion.form.index')->with('info','Laboratorio Guardado Correctamente');
+            return redirect()->route('institucion.form.index')->with('success','Laboratorio Guardado Correctamente');
         } else {
             return redirect()->route('institucion.form.index')->withErrors(['error' => 'Error al actualizar el usuario.']);
         }

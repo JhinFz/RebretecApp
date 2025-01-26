@@ -58,22 +58,30 @@
             </tbody>
         </table>
     </div>
-    <div class="card-body">
-
-        <button class="btn btn-success" data-toggle="modal" data-target="#modalAprobar">Asignar Técnico</button>
-
-        <a href="{{ route('institucion.solicitud.index') }}" class="btn btn-primary">Volver al Listado</a>
-
-        @include('admin.solicitudes.modal_aprobar')
-        
+    <div>
+        <form id="formUsuario" action="{{ route('institucion.solicitud.update', $solicitud->id_soli) }}" method="POST" onsubmit="return confirm('¿Desea aprobar esta solicitud?');">
+            @csrf
+            @method('PUT')
+            <div class="form-group card-body bg-info text-white p-3">
+                <label for="tecnico">Seleccionar Técnico:</label>
+                <select id="tecSelect" name="id_tecnico" class="form-control" required>
+                    <option value="">Seleccione un Técnico...</option>
+                    @foreach($tecnicos as $tecnico)
+                        <option value="{{ $tecnico->perfilTecnico->id_perfil }}">{{ $tecnico->name }} - ({{ $tecnico->id }})</option>
+                    @endforeach
+                </select>
+            </div>
+            {{-- <div class="form-group">
+                <label for="fecha_visita">Fecha y Hora de Visita:</label>
+                <input type="datetime-local" id="fecha_visita"  class="form-control" required>
+            </div> --}}
+            <div class="card-body">
+                <button type="submit" class="btn btn-success">Aprobar</button>
+                <a href="{{ route('institucion.solicitud.index') }}" class="btn btn-primary">Volver al Listado</a>
+            </div>
+        </form>
     </div>
 </div>
-
-<select id="mySelect" style="width: 200px;">
-    <option value="1">Opción 1</option>
-    <option value="2">Opción 2</option>
-    <option value="3">Opción 3</option>
-</select>
 
 @stop
 
@@ -86,14 +94,9 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            $('#modalAprobar').on('shown.bs.modal', function () {
-                $('#tecnico').select2({
-                    placeholder: "Selecciona un técnico"
-                });
-            });
-
-            $('#modalAprobar').on('hidden.bs.modal', function () {
-                $('#tecnico').select2('destroy'); // Destruir la instancia
+            $('#tecSelect').select2({
+                placeholder: "Seleccione un Técnico...", // Placeholder
+                allowClear: true // Permitir limpiar la selección
             });
         });
     </script>

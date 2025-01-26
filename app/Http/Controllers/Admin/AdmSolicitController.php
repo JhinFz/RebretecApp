@@ -54,26 +54,17 @@ class AdmSolicitController extends Controller
         if (!$solicitud) {
             return redirect()->back()->with('error', 'Solicitud no encontrada.');
         }
-        $tecnicos = User::where('tipo_usuario', 'tecnico')->get();
-        $laboratorios = Laboratorio::where('id_perfil', $solicitud->id_perfil)->get();
-        return view('admin.solicitudes.visualizar', compact('solicitud','tecnicos','laboratorios'));
-    }
-
-    public function buscarTecnico(Request $request)
-    {
-        $query = $request->input('query');
-        // $tecnicos = User::where('tipo_usuario', 'tecnico')
-        //                 ->where('name', 'like', "%$query%")
-        //                 ->get(['id', 'name']);
-
-        //tecnicos que ya han cumplido su solicitud
         $tecnicos = User::where('tipo_usuario', 'tecnico')
+                        ->whereHas('perfilTecnico') // Asegurarse de que tenga un perfil
                         ->whereDoesntHave('perfilTecnico.solicitud', function ($query) {
                             $query->where('cumplimiento', false);
-                                })
-                        ->get(['id', 'name']);
+                        }) // Excluir perfiles con solicitudes con cumplimiento false
+                        ->with(['perfilTecnico:id_perfil,user_id'])
+                        ->select('id', 'name')
+                        ->get();
 
-        return response()->json($tecnicos);
+        $laboratorios = Laboratorio::where('id_perfil', $solicitud->id_perfil)->get();
+        return view('admin.solicitudes.visualizar', compact('solicitud','tecnicos','laboratorios'));
     }
 
     /**
@@ -83,20 +74,29 @@ class AdmSolicitController extends Controller
     {
         $request->validate([
             'id_tecnico' => 'required|string|max:255',
-            // 'fecha_visita' => 'required|string|max:255',
         ]);
     
         $solicitud = Solicitud::find($id);
         if (!$solicitud) {
             return redirect()->back()->with('error', 'Solicitud no encontrada.');
         }
-    
-        $solicitud->update($request->all());
-        $solicitud->estado_soli = 'aprobado';
-        $solicitud->fecha_aceptacion = now();
-        $solicitud->save();
-    
-        return redirect()->route('admin.solicitud.index')->with('success', 'Solicitud aprobada correctamente.');
+
+        if ($solicitud->update($request->only('id_tecnico'))) {
+
+            $solicitud->estado_soli = 'aprobado';
+            $solicitud->fecha_aceptacion = now();
+            $solicitud->save();
+            return redirect()->route('admin.solicitud.index')->with('success', 'Solicitud aprobada correctamente.');
+            
+        } else {
+            return response()->json(['error' => 'No se procesó la solicitud.'], 500);
+        }
+        
+        
+
+        // return response()->json([
+        //     'id_tecnico' => $request->input('id_tecnico'),
+        // ]);
     }
 
     /**

@@ -178,7 +178,7 @@
 			<li><a  class="btn" href="{{route('bienvenida')}}">Inicio</a></li>
 			<li><a  class="btn" href="#noticias">Información</a></li>
 			<li><a  class="btn" href="#servicios">Servicios TI</a></li>
-			<li><a  class="btn" href="{{route('contactanos.index')}}">Solicitar Servicio</a></li>
+			<li><a  class="btn" href="{{ route('login') }}">Solicitar Servicio</a></li>
 			@if (Route::has('login'))
             @auth
 				<li><a href="{{ route('dashboard') }}" class="btn" style="background-color: rgb(255, 98, 0);">Panel Administrativo</a></li>
@@ -205,7 +205,7 @@
 	</div>
 	<div class="request-info">
 		<p>REDUCCIÓN DE LA BRECHA TECNOLÓGICA DIGITAL A TRAVÉS DE ESTRATEGIAS Y LÍNEAS DE ACCIÓN PARA EL FORTALECIMIENTO DE LA AGENDA DE TRANSFORMACIÓN DIGITAL 2022-2025 EN EL CANTÓN MORONA</p>
-		<a href="{{route('contactanos.index')}}">Solicitar Servicio</a>
+		<a href="{{ route('login') }}">Solicitar Servicio</a>
 	</div>
 	<div class="news-events">
 		<div class="separador-horizontal"></div>

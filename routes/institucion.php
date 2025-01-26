@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Institucion\LabController;
 use App\Http\Controllers\Institucion\PerfilInstitucionController;
 use App\Http\Controllers\Institucion\SolicitudController;
-
+use App\Http\Controllers\ReporteController;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
@@ -19,4 +19,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/registro-form/', [SolicitudController::class, 'index'])->name('institucion.solicitud.index');
 
     Route::put('perfil/{id_perfil}', [PerfilInstitucionController::class, 'update'])->name('institucion.perfil.update');
+
+    // Reportes
+
+    Route::get('/reportes-institucion', function () {return view('reportes.institucion.parametrosInst');})->name('reportes.institucion');
+    Route::get('/reporte-gen', [ReporteController::class, 'reporteInstitucion'])->name('genreport.institucion');
 });

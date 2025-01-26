@@ -314,42 +314,11 @@ return [
             'label_color' => 'warning',
         ],
         [
-            'text'        => 'Solicitudes',
+            'text'        => 'Solicitudes Recibidas',
             'route'       => 'admin.solicitud.index',
             'icon'        => 'fas fa-envelope',
             'icon_color'  => 'info',
             'can'         => 'admin.solicitudes'
-        ],
-        [
-            'text'        => 'Solicitudes Asignadas',
-            'route'       => 'tecnico.solicitud.index',
-            'icon'        => 'fas fa-envelope',
-            'icon_color'  => 'success',
-            // 'can'         => 'admin.solicitudes'
-        ],
-        [
-            'text'        => 'Formulario de Accciones',
-            'route'       => 'tecnico.form.index',
-            // 'icon'        => 'fas fa-envelope',
-            'icon_color'  => 'success',
-            // 'can'         => 'admin.solicitudes'
-        ],
-        [
-            'text'    => 'REGISTROS',
-            'icon'    => 'fas fa-database',
-            'can'     => 'dashboard',
-            'submenu' => [
-                [
-                    'text'        => 'Registro de Equipos',
-                    // 'route'       => 'registros',
-                    'icon'        => 'fas fa-pencil-alt',
-                    'icon_color'  => 'success',
-                    'label'       => 'CRUD',
-                    'label_color' => 'warning',
-                    'can'         => 'dashboard',
-
-                ],
-            ],
         ],
         [
             'text'    => 'USUARIOS',
@@ -373,6 +342,37 @@ return [
             ],
         ],
         [
+            'text'    => 'REGISTROS',
+            'icon'    => 'fas fa-database',
+            'can'     => 'dashboard',
+            'submenu' => [
+                [
+                    'text'        => 'Registro de Equipos',
+                    // 'route'       => 'registros',
+                    'icon'        => 'fas fa-pencil-alt',
+                    'icon_color'  => 'success',
+                    'label'       => 'CRUD',
+                    'label_color' => 'warning',
+                    'can'         => 'dashboard',
+
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Solicitudes Asignadas',
+            'route'       => 'tecnico.solicitud.index',
+            'icon'        => 'fas fa-envelope',
+            'icon_color'  => 'success',
+            // 'can'         => 'admin.solicitudes'
+        ],
+        [
+            'text'        => 'Formulario de Accciones',
+            'route'       => 'tecnico.form.index',
+            // 'icon'        => 'fas fa-envelope',
+            'icon_color'  => 'success',
+            // 'can'         => 'admin.solicitudes'
+        ],
+        [
             'text'        => 'Registro de Solicitud',
             'route'       => 'institucion.form.index',
             'icon'        => 'fas fa-pencil-alt',
@@ -389,6 +389,35 @@ return [
             // 'label'       => '*',
             // 'label_color' => 'warning',
             'can'         => 'institucion.formulario.index',
+        ],
+        
+        [
+            'text'    => 'REPORTES',
+            'icon'    => 'fas fa-database',
+            // 'can'     => 'dashboard',
+            'submenu' => [
+                [
+                    'text'        => 'Reportes (Administrador)',
+                    'route'       => 'reportes.admin',
+                    // 'icon'        => 'fas fa-envelope',
+                    'icon_color'  => 'info',
+                    // 'can'         => 'admin.solicitudes'
+                ],
+                [
+                    'text'        => 'Reportes (Técnico)',
+                    'route'       => 'reportes.tecnico',
+                    // 'icon'        => 'fas fa-envelope',
+                    'icon_color'  => 'info',
+                    // 'can'         => 'admin.solicitudes'
+                ],
+                [
+                    'text'        => 'Reportes (Institución)',
+                    'route'       => 'reportes.institucion',
+                    // 'icon'        => 'fas fa-envelope',
+                    'icon_color'  => 'info',
+                    // 'can'         => 'admin.solicitudes'
+                ],
+            ],
         ],
         ['header' => 'CONFIGURACIÓN DE LA CUENTA'],
         [
