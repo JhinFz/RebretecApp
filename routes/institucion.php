@@ -23,5 +23,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Reportes
 
     Route::get('/reportes-institucion', function () {return view('reportes.institucion.parametrosInst');})->name('reportes.institucion');
-    Route::get('/reporte-gen', [ReporteController::class, 'reporteInstitucion'])->name('genreport.institucion');
+    Route::get('/reporte-gen-institucion', [ReporteController::class, 'reporteInstitucion'])->name('genreport.institucion');
 });

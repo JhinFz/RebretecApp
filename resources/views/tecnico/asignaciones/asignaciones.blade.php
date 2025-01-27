@@ -7,6 +7,11 @@
 @stop
 
 @section('content')
+        @if ($solicitudes->isEmpty())
+            <div class="alert alert-warning" role="alert">
+                No tiene solicitudes asignadas
+            </div>
+        @endif
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Lista de Solicitudes Recibidas</h3>

@@ -341,36 +341,36 @@ return [
                 ],
             ],
         ],
-        [
-            'text'    => 'REGISTROS',
-            'icon'    => 'fas fa-database',
-            'can'     => 'dashboard',
-            'submenu' => [
-                [
-                    'text'        => 'Registro de Equipos',
-                    // 'route'       => 'registros',
-                    'icon'        => 'fas fa-pencil-alt',
-                    'icon_color'  => 'success',
-                    'label'       => 'CRUD',
-                    'label_color' => 'warning',
-                    'can'         => 'dashboard',
+        // [
+        //     'text'    => 'REGISTROS',
+        //     'icon'    => 'fas fa-database',
+        //     'can'     => 'dashboard',
+        //     'submenu' => [
+        //         [
+        //             'text'        => 'Registro de Equipos',
+        //             // 'route'       => 'registros',
+        //             'icon'        => 'fas fa-pencil-alt',
+        //             'icon_color'  => 'success',
+        //             'label'       => 'CRUD',
+        //             'label_color' => 'warning',
+        //             'can'         => 'dashboard',
 
-                ],
-            ],
-        ],
+        //         ],
+        //     ],
+        // ],
         [
             'text'        => 'Solicitudes Asignadas',
             'route'       => 'tecnico.solicitud.index',
             'icon'        => 'fas fa-envelope',
             'icon_color'  => 'success',
-            // 'can'         => 'admin.solicitudes'
+            'can'         => 'tecnico.index'
         ],
         [
             'text'        => 'Formulario de Accciones',
             'route'       => 'tecnico.form.index',
             // 'icon'        => 'fas fa-envelope',
             'icon_color'  => 'success',
-            // 'can'         => 'admin.solicitudes'
+            'can'         => 'tecnico.index'
         ],
         [
             'text'        => 'Registro de Solicitud',
@@ -390,7 +390,6 @@ return [
             // 'label_color' => 'warning',
             'can'         => 'institucion.formulario.index',
         ],
-        
         [
             'text'    => 'REPORTES',
             'icon'    => 'fas fa-database',
@@ -401,21 +400,21 @@ return [
                     'route'       => 'reportes.admin',
                     // 'icon'        => 'fas fa-envelope',
                     'icon_color'  => 'info',
-                    // 'can'         => 'admin.solicitudes'
+                    'can'         => 'admin.users.index'
                 ],
                 [
                     'text'        => 'Reportes (Técnico)',
                     'route'       => 'reportes.tecnico',
                     // 'icon'        => 'fas fa-envelope',
                     'icon_color'  => 'info',
-                    // 'can'         => 'admin.solicitudes'
+                    'can'         => 'tecnico.index'
                 ],
                 [
                     'text'        => 'Reportes (Institución)',
                     'route'       => 'reportes.institucion',
                     // 'icon'        => 'fas fa-envelope',
                     'icon_color'  => 'info',
-                    // 'can'         => 'admin.solicitudes'
+                    'can'         => 'institucion.formulario.index'
                 ],
             ],
         ],

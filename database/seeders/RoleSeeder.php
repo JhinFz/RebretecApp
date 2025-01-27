@@ -17,13 +17,12 @@ class RoleSeeder extends Seeder
         $role2 = Role::create(['name'=>'Tecnico']);
         $role3 = Role::create(['name'=>'Institucion']);
 
-        // Permisos globales para admin y tecnico
+        // Permisos globales para admin, tecnico e institucion
 
         Permission::create(['name' => 'dashboard'])->syncRoles([$role1,$role2,$role3]);
 
         // Permisos de Administrador
 
-       
         Permission::create(['name' => 'admin.solicitudes'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.users.index'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.users.edit'])->syncRoles([$role1]);

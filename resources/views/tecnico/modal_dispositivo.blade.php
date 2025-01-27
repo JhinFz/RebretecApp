@@ -18,11 +18,15 @@
                         <label for="id_lab">Seleccionar Laboratorio:</label>
                         <select id="id_lab" name="id_lab" class="form-control" required>
                             <option value="">Seleccione...</option>
-                            @foreach($laboratorios as $laboratorio) <!-- Asegúrate de que la variable $laboratorios esté disponible -->
-                                <option value="{{ $laboratorio->id_lab }}">
-                                    {{ $laboratorio->name_lab }} - id:{{ $laboratorio->id_lab }}
-                                </option>
-                            @endforeach
+                            @if ($laboratorios && !$laboratorios->isEmpty())
+                                @foreach($laboratorios as $laboratorio)
+                                    <option value="{{ $laboratorio->id_lab }}">
+                                        {{ $laboratorio->name_lab }} - id:{{ $laboratorio->id_lab }}
+                                    </option>
+                                @endforeach
+                            @else
+                                <option value="" disabled>No hay laboratorios disponibles</option>
+                            @endif
                         </select>
                     </div>
                     <div class="form-group">

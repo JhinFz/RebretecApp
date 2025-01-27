@@ -49,8 +49,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'destroy' => 'tecnico.solicitud.destroy',
     ]);
 
+    Route::post('/finalizar-mantenimiento', [TecnicoFormController::class, 'FinalizarMant'])->name('finalizar.mant.tecnico');
+
     // Reportes
 
     Route::get('/reportes-tecnico', function () {return view('reportes.parametrosTecnico');})->name('reportes.tecnico');
-    Route::get('/reporte-gen', [ReporteController::class, 'reporteTecnico'])->name('genreport.tecnico');
+    Route::get('/reporte-gen-tecnico', [ReporteController::class, 'reporteTecnico'])->name('genreport.tecnico');
 });

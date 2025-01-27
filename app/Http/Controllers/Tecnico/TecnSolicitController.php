@@ -17,7 +17,9 @@ class TecnSolicitController extends Controller
     public function index()
     {
         $perfil = PerfilTecnico::where('user_id', Auth::id())->first();
-        $solicitudes = Solicitud::where('id_tecnico', $perfil->id_perfil)->get();
+        $solicitudes = Solicitud::where('id_tecnico', $perfil->id_perfil)
+                    ->where('cumplimiento',false)
+                    ->get();
         return view('tecnico.asignaciones.asignaciones', compact('solicitudes'));
     }
 

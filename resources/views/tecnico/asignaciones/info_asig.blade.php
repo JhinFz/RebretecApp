@@ -62,6 +62,12 @@
 
         <a href="{{ route('tecnico.form.index') }}" class="btn btn-success">Comenzar Atención</a>
 
+        {{-- <form action="{{ route('tecnico.form.index') }}" method="POST" style="display: inline;">
+            @csrf
+            <input type="hidden" name="id_soli" value="{{ $solicitud->id_soli }}">
+            <button type="submit" class="btn btn-success">Comenzar Atención</button>
+        </form> --}}
+
         <a href="{{ route('tecnico.solicitud.index') }}" class="btn btn-primary">Volver al Listado</a>
         
     </div>

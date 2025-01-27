@@ -17,20 +17,47 @@ class TecnicoFormController extends Controller
      */
     public function index()
     {
+
+        // $idSoli = $request->input('id_soli');
+        
         // Obtén el perfil del técnico autenticado
         $perfilTecnico = PerfilTecnico::where('user_id', Auth::id())->first();
         // Obtiene la solicitud asociada al perfil técnico
-        $solicitud = Solicitud::where('id_tecnico', $perfilTecnico->id_perfil)->first();
-        // Obtiene el perfil de institución asociado a la solicitud
-        $perfilInstitucion = $solicitud->perfilInstitucion;
-        // Obtiene todos los laboratorios asociados y carga dispositivos
-        $laboratorios = $perfilInstitucion->laboratorio()->with('dispositivo.diagnosticos.mantenimiento')->get();
-        // Filtra los dispositivos que pertenecen al laboratorio
-        $dispositivos = $laboratorios->flatMap(function ($laboratorio) {
-            return $laboratorio->dispositivo;
-        });
+        $solicitud = Solicitud::where('id_tecnico', $perfilTecnico->id_perfil)
+                    ->where('cumplimiento',false)
+                    ->first();
+        if ($solicitud) {
+             // Obtiene el perfil de institución asociado a la solicitud
+            $perfilInstitucion = $solicitud->perfilInstitucion;
+            // Obtiene todos los laboratorios asociados y carga dispositivos
+            $laboratorios = $perfilInstitucion->laboratorio()->with('dispositivo.diagnosticos.mantenimiento')->get();
+            // Filtra los dispositivos que pertenecen al laboratorio
+            $dispositivos = $laboratorios->flatMap(function ($laboratorio) {
+                return $laboratorio->dispositivo;
+            });
+            $idSoli = $solicitud->id_soli;
+        }
+        else {
+            $dispositivos = null;
+            $laboratorios = null;
+            $idSoli = null;
+        }
+        
     
-        return view('tecnico.diagnosticos_equipos', compact('dispositivos','laboratorios'));
+        return view('tecnico.diagnosticos_equipos', compact('dispositivos','laboratorios','idSoli'));
+    }
+
+    public function FinalizarMant(Request $request)
+    {
+        $idSoli = $request->input('id_soli');
+
+        $solicitud = Solicitud::find($idSoli);
+        
+        $solicitud->update([
+            'cumplimiento' => true,
+        ]);
+    
+        return redirect()->route('dashboard')->with('success', 'Servicio Finalizado Correctamente.');
     }
 
     /**

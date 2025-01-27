@@ -1,8 +1,12 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            {{-- <x-authentication-card-logo /> --}}
+            <img src="vendor/adminlte/dist/img/rebre-icon-load.png" alt="logo" />
         </x-slot>
+        <div align="center">
+            <a>REGISTRO REBRETEC</a> <br>
+        </div>
 
         <x-validation-errors class="mb-4" />
         

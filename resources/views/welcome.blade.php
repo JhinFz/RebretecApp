@@ -178,7 +178,6 @@
 			<li><a  class="btn" href="{{route('bienvenida')}}">Inicio</a></li>
 			<li><a  class="btn" href="#noticias">Información</a></li>
 			<li><a  class="btn" href="#servicios">Servicios TI</a></li>
-			<li><a  class="btn" href="{{ route('login') }}">Solicitar Servicio</a></li>
 			@if (Route::has('login'))
             @auth
 				<li><a href="{{ route('dashboard') }}" class="btn" style="background-color: rgb(255, 98, 0);">Panel Administrativo</a></li>
