@@ -26,15 +26,17 @@
         <!-- Columna para los diagnósticos -->
         <div class="col-md-8">
             <div class="mt-4">
-             
-                <button class="btn btn-primary" data-toggle="modal" data-target="#diagnosticModal">Registrar Nuevo Diagnóstico</button>
-        
+                <div class="mt-4">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#diagnosticModal">Registrar Nuevo Diagnóstico</button>
+                </div>
+                <br>
+
                 @if ($dispositivo && $dispositivo->diagnosticos && $dispositivo->diagnosticos->isEmpty())
                     <div class="alert alert-warning mt-3" role="alert">
                         No hay diagnósticos registrados para este dispositivo.
                     </div>
                 @else
-                    <table class="table table-striped mt-3">
+                    <table id="diags" class="table table-striped mt-3">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -94,4 +96,20 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+        $('#diags').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "pageLength": 10,
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
+            });
+        });
+    </script>
 @stop

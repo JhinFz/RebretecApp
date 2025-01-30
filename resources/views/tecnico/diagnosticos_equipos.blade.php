@@ -51,7 +51,7 @@
             <strong>ID de Solicitud en Atención:</strong> {{ $idSoli }}
         </div>
         <br>
-        <table class="table table-bordered table-striped" id="gest-solit">
+        <table class="table table-bordered table-striped" id="disp-diag-mant">
             <thead class="text-black" style="background-color: #d8d8d8;">
                 <tr>
                     <th>ID</th>
@@ -94,8 +94,10 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('tecnico.diagnostico.show', $dispositivo->id_pc) }}" class="btn btn-info">Diagnóstico</a>
-                            <a href="{{ route('tecnico.mantenimiento.show', $dispositivo->id_pc) }}" class="btn btn-warning">Mantenimiento</a>
+                            <div class="btn-group">
+                                <a href="{{ route('tecnico.diagnostico.show', $dispositivo->id_pc) }}" class="btn btn-info">Diagnóstico</a>
+                                <a href="{{ route('tecnico.mantenimiento.show', $dispositivo->id_pc) }}" class="btn btn-warning">Mantenimiento</a>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
@@ -146,6 +148,11 @@
 @endsection
 
 @section('scripts')
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const selectElement = document.getElementById('id_lab');
@@ -161,5 +168,16 @@
                 localStorage.setItem('selectedLabId', selectElement.value);
             });
         });
+
+        $(document).ready(function () {
+            $('#disp-diag-mant').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "pageLength": 10,
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
+            });
+        });
+
     </script>
 @endsection

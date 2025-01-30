@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Support\Facades\Auth;
-use PDF;
 
 use function PHPSTORM_META\map;
 

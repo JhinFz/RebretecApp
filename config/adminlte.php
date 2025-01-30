@@ -366,7 +366,7 @@ return [
             'can'         => 'tecnico.index'
         ],
         [
-            'text'        => 'Formulario de Accciones',
+            'text'        => 'Formulario de Acciones',
             'route'       => 'tecnico.form.index',
             // 'icon'        => 'fas fa-envelope',
             'icon_color'  => 'success',
