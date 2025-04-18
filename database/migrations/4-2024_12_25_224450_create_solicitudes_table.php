@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('asunto');
             $table->string('detalles_soli');
             $table->string('estado_soli');
-            $table->timestamps();
             $table->timestamp('fecha_aceptacion')->nullable();
             $table->unsignedBigInteger('id_tecnico')->nullable();
             $table->boolean('cumplimiento')->default(false);
+            $table->timestamps();
 
             // Definir la clave foránea
             $table->foreign('id_perfil')->references('id_perfil')->on('perfil_institucion');
