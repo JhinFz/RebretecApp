@@ -89,8 +89,9 @@ class AdmSolicitController extends Controller
                 $solicitud->save();
                 return redirect()->route('admin.solicitud.index')->with('success', 'Solicitud aprobada correctamente.');
             }
-            
-            return redirect()->route('admin.solicitud.edit')->with('success', 'Técnico asignado correctamente.');
+            else {
+                return redirect()->route('admin.solicitud.edit')->with('success', 'Técnico asignado correctamente.');
+            }
             
         } else {
             return response()->json(['error' => 'No se procesó la solicitud.'], 500);
