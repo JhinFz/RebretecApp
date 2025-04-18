@@ -321,6 +321,13 @@ return [
             'can'         => 'admin.solicitudes'
         ],
         [
+            'text'        => 'Seguimiento de Solicitudes',
+            'route'       => 'seguimiento',
+            'icon'        => 'fas fa-search',
+            'icon_color'  => 'info',
+            'can'         => 'admin.solicitudes'
+        ],
+        [
             'text'    => 'USUARIOS',
             'icon'    => 'fas fa-users',
             'can'     => 'admin.users.index',

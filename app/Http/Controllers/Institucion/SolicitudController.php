@@ -48,9 +48,9 @@ class SolicitudController extends Controller
         if (!$solicitud) {
             return redirect()->back()->with('error', 'Solicitud no encontrada.');
         }
-
+        $tecnico = $solicitud->perfilTecnico;
         // Retornar la vista con la información de la solicitud
-        return view('institucion.estado_soli', compact('solicitud'));
+        return view('institucion.estado_soli', compact('solicitud','tecnico'));
     }
 
     /**

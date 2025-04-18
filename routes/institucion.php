@@ -7,7 +7,7 @@ use App\Http\Controllers\Institucion\PerfilInstitucionController;
 use App\Http\Controllers\Institucion\SolicitudController;
 use App\Http\Controllers\ReporteController;
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified','can:institucion.formulario.index'])->group(function () {
     
     Route::get('/registro-solicitud/', [FormularioController::class, 'index'])->name('institucion.form.index');
     Route::post('/envio-solicitud/', [FormularioController::class, 'store'])->name('institucion.form.store');

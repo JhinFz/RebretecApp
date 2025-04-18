@@ -83,10 +83,14 @@ class AdmSolicitController extends Controller
 
         if ($solicitud->update($request->only('id_tecnico'))) {
 
-            $solicitud->estado_soli = 'aprobado';
-            $solicitud->fecha_aceptacion = now();
-            $solicitud->save();
-            return redirect()->route('admin.solicitud.index')->with('success', 'Solicitud aprobada correctamente.');
+            if ($solicitud->estado_soli == 'procesando') {
+                $solicitud->estado_soli = 'aprobado';
+                $solicitud->fecha_aceptacion = now();
+                $solicitud->save();
+                return redirect()->route('admin.solicitud.index')->with('success', 'Solicitud aprobada correctamente.');
+            }
+            
+            return redirect()->route('admin.solicitud.edit')->with('success', 'Técnico asignado correctamente.');
             
         } else {
             return response()->json(['error' => 'No se procesó la solicitud.'], 500);

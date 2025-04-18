@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="container mt-5">
-    <h1>Bienvenido, {{ Auth::user()->name }}!</h1>
+    <h1>Bienvenido/a, {{ Auth::user()->name }}!</h1>
 
     @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
