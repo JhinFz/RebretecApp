@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id("id_perfil");
             $table->unsignedBigInteger('user_id');
             $table->string('instname');
-            $table->string('cod_amie');
+            $table->string('cod_amie', 8);
             $table->string('telefono');
             $table->string('direccion');
             $table->timestamps();
