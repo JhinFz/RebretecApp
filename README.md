@@ -37,7 +37,7 @@ Instalar Composer, Node.js y XAMPP (MySQL y Apache)
 git clone https://github.com/JhinFz/RebretecApp.git
 ```
 ```shell
-cd RebretecAPP
+cd RebretecApp
 ```
 
 2. Configurar archivo `.env`:
