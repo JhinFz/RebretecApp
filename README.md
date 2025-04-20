@@ -20,9 +20,8 @@ RebretecAPP es una aplicación web basada en Laravel 10 que permite gestionar la
 - Realizar un seguimiento del actividades que se registren en cada evento de atención.
 - Generación de reportes de actividades para cada rol de usuario.
 
-## ⚙️ Instalación
-
 <a name="instalacion-ancla"></a>
+## ⚙️ Instalación
 
 ### Requisitos previos
 
@@ -60,10 +59,8 @@ Si desea migrar los datos de prueba de la aplicación, ejecutar:
 ```shell
 php artisan migrate --seed
 ```
-
-## ▶️ Uso
-
 <a name="uso-ancla"></a>
+## ▶️ Uso
 
 - Ejecutar el servicio de MySQL y Apache mediante XAMPP.
 
