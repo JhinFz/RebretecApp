@@ -47,6 +47,7 @@
                                 <th>ID</th>
                                 <th>Descripción</th>
                                 <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,6 +56,13 @@
                                     <td>{{ $diagnostico->id_diag }}</td>
                                     <td>{{ $diagnostico->diagnostico_detail }}</td>
                                     <td>{{ $diagnostico->created_at->format('d/m/Y H:i') }}</td>
+                                    <td>
+                                        <form action="{{ route('tecnico.diagnostico.destroy', $diagnostico->id_diag) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar este diagnóstico?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

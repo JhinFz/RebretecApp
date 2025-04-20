@@ -86,6 +86,7 @@
                             <th>No.</th>
                             <th>Descripción</th>
                             <th>ID</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -94,6 +95,13 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $mantenimiento->actividades }}</td>
                                 <td>{{ $mantenimiento->id_mant }}</td>
+                                <td>
+                                    <form action="{{ route('tecnico.mantenimiento.destroy', $mantenimiento->id_mant) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar esta actividad correctiva?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

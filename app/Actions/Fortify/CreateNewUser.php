@@ -31,7 +31,7 @@ class CreateNewUser implements CreatesNewUsers
         if ($input['opcion'] === 'institucion' ) {
             Validator::make($input, [
                 'instname' => ['required', 'string', 'max:255'],
-                'cod_amie' => ['required', 'string', 'max:255'],
+                'cod_amie' => ['required', 'string', 'max:8'],
                 'direccion' => ['required', 'string', 'max:255'],
                 'rep-telefono' => ['required', 'string', 'max:10', 'regex:/^\d+$/'],
             ], [
@@ -41,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
             
                 'cod_amie.required' => 'El código AMIE es obligatorio.',
                 'cod_amie.string' => 'El código AMIE debe ser una cadena de texto.',
-                'cod_amie.max' => 'El código AMIE no puede tener más de 255 caracteres.',
+                'cod_amie.max' => 'El código AMIE no puede tener más de 8 caracteres.',
             
                 'direccion.required' => 'La dirección es obligatoria.',
                 'direccion.string' => 'La dirección debe ser una cadena de texto.',

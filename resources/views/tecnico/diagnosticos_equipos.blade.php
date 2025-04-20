@@ -97,7 +97,12 @@
                             <div class="btn-group">
                                 <a href="{{ route('tecnico.diagnostico.show', $dispositivo->id_pc) }}" class="btn btn-info">Diagnóstico</a>
                                 <a href="{{ route('tecnico.mantenimiento.show', $dispositivo->id_pc) }}" class="btn btn-warning">Mantenimiento</a>
-                            </div>
+                                <form action="{{ route('tecnico.dispositivo.destroy', $dispositivo->id_pc) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar este dispositivo?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </div>                           
                         </td>
                     </tr>
                     @endforeach

@@ -81,6 +81,14 @@ class DiagnosticoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $diagnosticos = Diagnostico::find($id);
+        
+        if (!$diagnosticos) {
+            return redirect()->back()->with('error', 'Diagnóstico no encontrado.');
+        }
+        else {
+            $diagnosticos->delete();
+            return redirect()->back()->with('success', 'Diagnóstico eliminado correctamente.');
+        }
     }
 }
