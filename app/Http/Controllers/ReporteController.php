@@ -41,7 +41,8 @@ class ReporteController extends Controller
 
         // Obtener las fechas
         $startDate = $request->start_date;
-        $endDate = $request->end_date;
+        // $endDate = $request->end_date;
+        $endDate = date('Y-m-d', strtotime($request->end_date . ' +1 day'));
 
         if ($request->data_set == 1) {
             //filtrar por fechas
@@ -84,7 +85,7 @@ class ReporteController extends Controller
 
         // Obtener las fechas
         $startDate = $request->start_date;
-        $endDate = $request->end_date;
+        $endDate = date('Y-m-d', strtotime($request->end_date . ' +1 day'));
 
         $laboratorios = Laboratorio::with('perfilInstitucion')->whereBetween('created_at', [$startDate, $endDate])->get(); 
         $solicitudes = Solicitud::whereBetween('created_at', [$startDate, $endDate])->get();
@@ -162,7 +163,7 @@ class ReporteController extends Controller
 
         // Obtener las fechas
         $startDate = $request->start_date;
-        $endDate = $request->end_date;
+        $endDate = date('Y-m-d', strtotime($request->end_date . ' +1 day'));
 
         $idperfil = PerfilInstitucion::where('user_id', Auth::id())->pluck('id_perfil');
 
