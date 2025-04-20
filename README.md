@@ -3,7 +3,7 @@
 ## 📂 Navegación rápida
 
 - [📘 Manual de Usuario](./Manual_de_usuario.md)
-- [🛠 Instalación](#-instalación)
+- [🛠 Instalación](#⚙️-instalación)
 
 ## 📌 RebretecAPP
 
