@@ -90,7 +90,7 @@ class AdmSolicitController extends Controller
                 return redirect()->route('admin.solicitud.index')->with('success', 'Solicitud aprobada correctamente.');
             }
             else {
-                return redirect()->route('admin.solicitud.edit')->with('success', 'Técnico asignado correctamente.');
+                return redirect()->route('seguimiento')->with('success', 'Técnico asignado correctamente.');
             }
             
         } else {

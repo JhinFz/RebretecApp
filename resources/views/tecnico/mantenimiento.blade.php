@@ -9,6 +9,8 @@
 @section('content')
 
 <div class="container">
+
+    {{-- <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a> --}}
     
     <div class="row mt-4">
         <!-- Columna para los detalles del dispositivo -->
@@ -22,9 +24,13 @@
                     <!-- Agrega más detalles según sea necesario -->
                 </div>
             </div>
-        </div>
+        </div>        
+        
         <!-- Columna para los diagnósticos -->
         <div class="col-md-8">
+
+            <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a>
+
             <div class="mt-4">
                 <h3>Listado de Problemas Pendientes:</h3>
                 @if ($dispositivo && $dispositivo->diagnosticos && $dispositivo->diagnosticos->isEmpty())

@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin1234'),
             'is_approved' => true,
-            'tipo_usuario' => 'tecnico'
+            'tipo_usuario' => 'admin'
         ])->assignRole('Administrador');
 
         PerfilTecnico::create([

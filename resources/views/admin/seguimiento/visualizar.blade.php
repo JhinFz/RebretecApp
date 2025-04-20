@@ -95,10 +95,7 @@
         <div class="card-body">
             <div class="row justify-content-center">
                 <div class="col-auto">
-                    <form action="{{ route('finalizar.mant.tecnico') }}" method="POST" style="display: inline;">
-                        @csrf
-                        <input type="hidden" name="id_soli" value="{{ $idSoli }}">
-                        <button type="submit" class="btn btn-success">Volver</button>
+                    <a href="{{ route('seguimiento') }}" class="btn btn-success">Volver</a>
                     </form>
                 </div>
             </div>

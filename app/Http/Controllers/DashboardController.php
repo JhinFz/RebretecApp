@@ -25,7 +25,7 @@ class DashboardController extends Controller
             //notificaciones técnico
             $perfilTecnico = PerfilTecnico::where('user_id', Auth::id())->first();
             if ($perfilTecnico) {
-                $soliAsig = Solicitud::where('id_tecnico', $perfilTecnico->id_perfil)->count();
+                $soliAsig = Solicitud::where('id_tecnico', $perfilTecnico->id_perfil)->where('cumplimiento', 0)->count();
             } else {
                 $soliAsig = 0; 
             }

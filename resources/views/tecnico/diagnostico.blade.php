@@ -9,6 +9,8 @@
 @section('content')
 
 <div class="container">
+
+    {{-- <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a> --}}
     
     <div class="row mt-4">
         <!-- Columna para los detalles del dispositivo -->
@@ -25,6 +27,9 @@
         </div>
         <!-- Columna para los diagnósticos -->
         <div class="col-md-8">
+
+            <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a>
+
             <div class="mt-4">
                 <div class="mt-4">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#diagnosticModal">Registrar Nuevo Diagnóstico</button>
