@@ -3,9 +3,9 @@
 ## 📂 Navegación rápida
 
 - [📘 Manual de Usuario](./Manual_de_usuario.md)
-- [🛠 Instalación](#https://github.com/JhinFz/RebretecApp?tab=readme-ov-file#%EF%B8%8F-instalaci%C3%B3n)
-- [🚀 Uso](#https://github.com/JhinFz/RebretecApp?tab=readme-ov-file#%EF%B8%8F-uso)
-
+- [🛠 Instalación](#instalacion-ancla)
+- [🚀 Uso](#uso-ancla)
+  
 ## 📌 RebretecAPP
 
 RebretecAPP es una aplicación web basada en Laravel 10 que permite gestionar las solicitudes del servicio de mantenimiento de la organización REBRETEC.
@@ -21,6 +21,8 @@ RebretecAPP es una aplicación web basada en Laravel 10 que permite gestionar la
 - Generación de reportes de actividades para cada rol de usuario.
 
 ## ⚙️ Instalación
+
+<a name="instalacion-ancla"></a>
 
 ### Requisitos previos
 
@@ -60,6 +62,8 @@ php artisan migrate --seed
 ```
 
 ## ▶️ Uso
+
+<a name="uso-ancla"></a>
 
 - Ejecutar el servicio de MySQL y Apache mediante XAMPP.
 
