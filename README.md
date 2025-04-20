@@ -3,7 +3,8 @@
 ## 📂 Navegación rápida
 
 - [📘 Manual de Usuario](./Manual_de_usuario.md)
-- [🛠 Instalación](#⚙️-instalación)
+- [🛠 Instalación](#https://github.com/JhinFz/RebretecApp?tab=readme-ov-file#%EF%B8%8F-instalaci%C3%B3n)
+- [🚀 Uso](#https://github.com/JhinFz/RebretecApp?tab=readme-ov-file#%EF%B8%8F-uso)
 
 ## 📌 RebretecAPP
 
