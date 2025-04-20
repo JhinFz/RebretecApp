@@ -2,7 +2,7 @@
 
 ## 📂 Navegación rápida
 
-- [📘 Manual de Usuario](./Manual_de_usuario.md)
+- [📘 Manual de Usuario](https://github.com/JhinFz/RebretecApp/wiki)
 - [🛠 Instalación](#instalacion-ancla)
 - [🚀 Uso](#uso-ancla)
   
@@ -19,6 +19,8 @@ RebretecAPP es una aplicación web basada en Laravel 10 que permite gestionar la
 - Registrar las actividades de diagnóstico y mantenimiento para cada dispositivo identificado en una solicitud.
 - Realizar un seguimiento del actividades que se registren en cada evento de atención.
 - Generación de reportes de actividades para cada rol de usuario.
+
+¿Quieres más detalles? Consulta la [📚 Wiki del proyecto](https://github.com/JhinFz/RebretecApp/wiki).
 
 <a name="instalacion-ancla"></a>
 ## ⚙️ Instalación
