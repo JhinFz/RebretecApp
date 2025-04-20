@@ -1,12 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## 📌 RebretecAPP
 
 RebretecAPP es una aplicación web basada en Laravel 10 que permite gestionar las solicitudes del servicio de mantenimiento de la organización REBRETEC.
@@ -23,49 +16,73 @@ RebretecAPP es una aplicación web basada en Laravel 10 que permite gestionar la
 
 ## ⚙️ Instalación
 
+### Requisitos previos
+
+Instalar Composer, Node.js y XAMPP (MySQL y Apache)
+
+### Procedimiento
+
+1. Mediante terminal, clonar el repositorio y seleccionarlo (debe estar dentro de la carpeta htdocs de XAMPP)
+
 ```shell
-git clone https://github.com/tuusuario/nombre-repo.git
-cd nombre-repo
+git clone https://github.com/JhinFz/RebretecApp.git
+```
+```shell
+cd RebretecAPP
 ```
 
+2. Configurar archivo .env
+Laravel ya trae uno, solo asegúrese de configurar las siguientes variables para conexión con la base de datos:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- `DB_DATABASE`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- `DB_USERNAME`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- `DB_PASSWORD`
 
-## Laravel Sponsors
+3. Ejecutar la migración de la estructura de la base de datos mediante:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```shell
+php artisan migrate
+```
 
-### Premium Partners
+Si desea migrar los datos de prueba de la aplicación, ejecutar:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```shell
+php artisan migrate --seed
+```
 
-## Contributing
+## ▶️ Uso
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Ejecutar el servicio de MySQL y Apache mediante XAMPP.
 
-## Code of Conduct
+Alternativa a Apache:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```shell
+php artisan serve
+```
 
-## Security Vulnerabilities
+📌 Levanta un servidor web local para que puedas ejecutar y probar tu aplicación Laravel en tu navegador.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🛠 Tecnologías principales
+
+- Node.js
+- Composer
+- PHP
+- Blade
+
+Paquetes utilizados:
+
+- `"barryvdh/laravel-dompdf": "^2.0"`
+- `"guzzlehttp/guzzle": "^7.2"`
+- `"jeroennoten/laravel-adminlte": "^3.9"`
+- `"laravel/framework": "^10.10"`
+- `"laravel/jetstream": "^3.2"`
+- `"laravel/sanctum": "^3.2"`
+- `"laravelcollective/html": "^6.4"`
+- `"livewire/livewire": "^2.11"`
+- `"spatie/laravel-permission": "^6.10"`
+- `"itsgoingd/clockwork": "^5.3"`
 
 ## License
 
