@@ -31,7 +31,8 @@ git clone https://github.com/JhinFz/RebretecApp.git
 cd RebretecAPP
 ```
 
-2. Configurar archivo .env
+2. Configurar archivo `.env`:
+   
 Laravel ya trae uno, solo asegúrese de configurar las siguientes variables para conexión con la base de datos:
 
 - `DB_DATABASE`
