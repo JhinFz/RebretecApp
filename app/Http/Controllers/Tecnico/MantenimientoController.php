@@ -90,6 +90,14 @@ class MantenimientoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mantenimientos = Mantenimiento::find($id);
+
+        if (!$mantenimientos) {
+            return redirect()->back()->with('error', 'Actividad correctiva no encontrada.');
+        }
+        else {
+            $mantenimientos->delete();
+            return redirect()->back()->with('success', 'Actividad correctiva eliminada correctamente.');
+        }
     }
 }

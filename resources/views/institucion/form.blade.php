@@ -57,11 +57,11 @@
                         <a href="{{ route('institucion.lab.edit', $laboratorio->id_lab) }}" class="btn btn-warning btn-sm">Editar</a>
                                 
                         <!-- Botón de Eliminar -->
-                        <form action="{{ route('institucion.lab.destroy', $laboratorio->id_lab) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este laboratorio?');">
+                        {{-- <form action="{{ route('institucion.lab.destroy', $laboratorio->id_lab) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este laboratorio?');">
                             @csrf
                             @method('DELETE') <!-- Esto indica que se debe usar el método DELETE -->
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
             @endforeach

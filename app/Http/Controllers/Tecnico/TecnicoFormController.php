@@ -20,7 +20,7 @@ class TecnicoFormController extends Controller
 
         // $idSoli = $request->input('id_soli');
         
-        // Obtén el perfil del técnico autenticado
+        // Obtener el perfil del técnico autenticado
         $perfilTecnico = PerfilTecnico::where('user_id', Auth::id())->first();
         // Obtiene la solicitud asociada al perfil técnico
         $solicitud = Solicitud::where('id_tecnico', $perfilTecnico->id_perfil)

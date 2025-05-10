@@ -48,7 +48,7 @@
             <th>Disponibilidad de Internet</th>
             <th>Detalles</th>
             <th>ID de Perfil</th>
-            <th>Perfil de Institución</th>
+            <th>Solicitante</th>
         </tr>
     </thead>
     <tbody>
@@ -62,7 +62,7 @@
                 <td>{{ $laboratorio->d_internet }}</td>
                 <td>{{ $laboratorio->detalles_lab }}</td>
                 <td>{{ $laboratorio->id_perfil }}</td>
-                <td>{{ $laboratorio->perfilInstitucion->nombre_perfil ?? 'N/A' }}</td>
+                <td>{{ $laboratorio->perfilInstitucion->instname ?? 'N/A' }}</td>
             </tr>
         @endforeach
     </tbody>

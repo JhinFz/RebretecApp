@@ -9,6 +9,8 @@
 @section('content')
 
 <div class="container">
+
+    {{-- <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a> --}}
     
     <div class="row mt-4">
         <!-- Columna para los detalles del dispositivo -->
@@ -25,21 +27,27 @@
         </div>
         <!-- Columna para los diagnósticos -->
         <div class="col-md-8">
+
+            <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a>
+
             <div class="mt-4">
-             
-                <button class="btn btn-primary" data-toggle="modal" data-target="#diagnosticModal">Registrar Nuevo Diagnóstico</button>
-        
+                <div class="mt-4">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#diagnosticModal">Registrar Nuevo Diagnóstico</button>
+                </div>
+                <br>
+
                 @if ($dispositivo && $dispositivo->diagnosticos && $dispositivo->diagnosticos->isEmpty())
                     <div class="alert alert-warning mt-3" role="alert">
                         No hay diagnósticos registrados para este dispositivo.
                     </div>
                 @else
-                    <table class="table table-striped mt-3">
+                    <table id="diags" class="table table-striped mt-3">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Descripción</th>
                                 <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +56,13 @@
                                     <td>{{ $diagnostico->id_diag }}</td>
                                     <td>{{ $diagnostico->diagnostico_detail }}</td>
                                     <td>{{ $diagnostico->created_at->format('d/m/Y H:i') }}</td>
+                                    <td>
+                                        <form action="{{ route('tecnico.diagnostico.destroy', $diagnostico->id_diag) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar este diagnóstico?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -94,4 +109,20 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+        $('#diags').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "pageLength": 10,
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
+            });
+        });
+    </script>
 @stop

@@ -321,6 +321,13 @@ return [
             'can'         => 'admin.solicitudes'
         ],
         [
+            'text'        => 'Seguimiento de Solicitudes',
+            'route'       => 'seguimiento',
+            'icon'        => 'fas fa-search',
+            'icon_color'  => 'info',
+            'can'         => 'admin.solicitudes'
+        ],
+        [
             'text'    => 'USUARIOS',
             'icon'    => 'fas fa-users',
             'can'     => 'admin.users.index',
@@ -366,7 +373,7 @@ return [
             'can'         => 'tecnico.index'
         ],
         [
-            'text'        => 'Formulario de Accciones',
+            'text'        => 'Formulario de Acciones',
             'route'       => 'tecnico.form.index',
             // 'icon'        => 'fas fa-envelope',
             'icon_color'  => 'success',

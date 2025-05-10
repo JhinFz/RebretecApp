@@ -8,9 +8,9 @@
 
 @section('content')
 
-@if (session('info'))
+@if (session('success'))
     <div class="alert alert-success">
-        {{ session('info') }}
+        {{ session('success') }}
     </div>
 @endif
 

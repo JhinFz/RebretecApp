@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id('id_pc');
             $table->unsignedBigInteger('id_lab'); //lab al que pertenece
             // $table->string('tipo')->nullable(true);
+            $table->string('name_pc')->nullable(true);
             $table->string('marca')->nullable(true);
             $table->string('modelo')->nullable(true);
             $table->string('serie')->nullable(true);

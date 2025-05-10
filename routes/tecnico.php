@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Tecnico\TecnicoFormController;
 use App\Http\Controllers\Tecnico\TecnSolicitController;
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified','can:tecnico.index'])->group(function () {
     
     Route::get('/formulario-registro/', [TecnicoFormController::class, 'index'])->name('tecnico.form.index');
 

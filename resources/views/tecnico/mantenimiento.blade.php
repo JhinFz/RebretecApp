@@ -9,6 +9,8 @@
 @section('content')
 
 <div class="container">
+
+    {{-- <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a> --}}
     
     <div class="row mt-4">
         <!-- Columna para los detalles del dispositivo -->
@@ -22,9 +24,13 @@
                     <!-- Agrega más detalles según sea necesario -->
                 </div>
             </div>
-        </div>
+        </div>        
+        
         <!-- Columna para los diagnósticos -->
         <div class="col-md-8">
+
+            <a href="{{ route('tecnico.form.index') }}" class="btn btn-warning">⬅ Volver</a>
+
             <div class="mt-4">
                 <h3>Listado de Problemas Pendientes:</h3>
                 @if ($dispositivo && $dispositivo->diagnosticos && $dispositivo->diagnosticos->isEmpty())
@@ -32,7 +38,7 @@
                         No hay diagnósticos registrados para este dispositivo.
                     </div>
                 @else
-                    <table class="table table-striped mt-3">
+                    <table id="diags" class="table table-striped mt-3">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -74,12 +80,13 @@
                     No hay actividades correctivas registradas para este dispositivo.
                 </div>
             @else
-                <table class="table table-striped mt-3">
+                <table id="mantenimiento" class="table table-striped mt-3">
                     <thead>
                         <tr>
                             <th>No.</th>
                             <th>Descripción</th>
                             <th>ID</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,6 +95,13 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $mantenimiento->actividades }}</td>
                                 <td>{{ $mantenimiento->id_mant }}</td>
+                                <td>
+                                    <form action="{{ route('tecnico.mantenimiento.destroy', $mantenimiento->id_mant) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres borrar esta actividad correctiva?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -107,11 +121,37 @@
 @stop
 
 @section('scripts')
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+
+
 <script>
     function loadDataFromSession(diagnosticoDetail, idDiag) {
             // Asignar valores al modal
             document.getElementById('diagnosticoDetail').textContent = diagnosticoDetail;
             document.getElementById('id_diag').value = idDiag;
     }
+
+        $(document).ready(function () {
+            $('#diags').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "pageLength": 10,
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
+            });
+        });
+    
+        $(document).ready(function () {
+            $('#mantenimiento').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"ALL"]],
+                "pageLength": 10,
+                "language": {
+                    "url": 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+                }
+            });
+        });
 </script>   
 @stop

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('diagnosticos', function (Blueprint $table) {
             $table->id('id_diag');
             $table->unsignedBigInteger('id_pc'); //lab al que pertenece
+            $table->string('nombre_diag');
             $table->string('diagnostico_detail');
             $table->boolean('estado')->default(false);
             $table->string('msg_admin')->nullable(true);

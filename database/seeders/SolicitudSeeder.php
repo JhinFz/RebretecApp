@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Contacto;
+use App\Models\Solicitud;
 
 class SolicitudSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class SolicitudSeeder extends Seeder
      */
     public function run(): void
     {
-        // Contacto::create([
+        // Solicitud::create([
         //     'instname' => 'Eloy Alfaro',
         //     'name' => 'Don Bosco',
         //     'correo' => 'correo1@gmail.com',

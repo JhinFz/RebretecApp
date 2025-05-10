@@ -25,11 +25,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($solicitudes->isEmpty())
+                    {{-- @if ($solicitudes->isEmpty())
                         <tr>
                             <td colspan="7" class="text-center">No hay solicitudes registradas.</td>
                         </tr>
-                    @else
+                    @else --}}
                         @foreach ($solicitudes as $index => $solicitud)
                         <tr>
                             <td>{{ $index + 1 }}</td>
@@ -57,7 +57,7 @@
                             </td>
                         </tr>
                         @endforeach
-                    @endif                                     
+                    {{-- @endif                                      --}}
                 </tbody>
             </table>
         </div>
